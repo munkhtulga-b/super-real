@@ -1,9 +1,21 @@
 const MainVideoFrame = () => {
   return (
-    <div className="tw-mt-[50px] tw-w-full tw-max-h-[449px] tw-overflow-hidden">
-      <div className="video-container">
-        <video height={449} autoPlay muted>
-          <source src="/assets/1.mp4" type="video/mp4" />
+    <div className="tw-mt-[50px] tw-w-full">
+      <div className="video-container tw-relative">
+        <span
+          style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
+          className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 tw-text-base"
+        >
+          き ま た の A I モ デ ル で す
+        </span>
+        <video
+          style={{ zIndex: 0 }}
+          height={"100%"}
+          width={"100%"}
+          autoPlay
+          muted
+        >
+          <source src="/assets/demo-video-4.mp4" type="video/mp4" />
         </video>
       </div>
     </div>

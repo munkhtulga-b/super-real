@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <div className="tw-min-h-screen">{children}</div>
+        <main className="tw-min-h-screen">{children}</main>
       </body>
     </html>
   );

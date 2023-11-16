@@ -1,17 +1,23 @@
-import MainHeader from "./_components/MainHeader";
-import MainOptions from "./_components/MainOptions";
-import MainVideoFrame from "./_components/MainVideoFrame";
-import ButtonSecondary from "./_components/buttons/ButtonSecondary";
+"use client";
+
+import { useEffect, useState } from "react";
+import MobileLayout from "./_components/layouts/MobileLayout";
+import DesktopLayout from "./_components/layouts/DesktopLayout";
 
 export default function Home() {
+  useEffect(() => {
+    setScreenSize(window.innerWidth);
+    window.addEventListener("resize", () => {
+      setScreenSize(window.innerWidth);
+    });
+  }, []);
+
+  const [screenSize, setScreenSize] = useState(0);
+
   return (
-    <main className="tw-flex tw-flex-col">
-      <MainHeader />
-      <MainVideoFrame />
-      <MainOptions message="質問があります？" />
-      <section className="tw-mt-[41px] tw-px-4">
-        <ButtonSecondary />
-      </section>
-    </main>
+    <>
+      {screenSize !== 0 && screenSize > 768 && <DesktopLayout />}
+      {screenSize !== 0 && screenSize < 768 && <MobileLayout />}
+    </>
   );
 }

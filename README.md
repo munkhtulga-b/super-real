@@ -5,7 +5,7 @@
 - A project developed by SigmaLeads LLC
 - @since - November 15, 2023
 - @author - Munkhtulga Borgil
-- @contact - munkhtulga@mirai.mn
+- @contact - munkhtulga@mirai.mng
 
   \*
 

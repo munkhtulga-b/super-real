@@ -1,43 +1,43 @@
 import React from "react";
+import Image from "next/image";
 
 type ButtonProps = {
-  bgColor?: string;
-  textColor?: string;
-  borderColor?: string;
   text: string;
+
+  /**
+   * @prop must be "play" | "pause" | "completed"
+   */
   iconType: "play" | "pause" | "completed";
 };
 
 const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
-  bgColor,
-  textColor,
-  borderColor,
   text,
   iconType,
 }) => {
-  const colorCombition = (): { bgColor: string; borderColor: string } => {
-    let result = { bgColor: "#D3E7FF", borderColor: "#C7D7FF" };
-    if (bgColor && borderColor && iconType) {
-      result.bgColor = bgColor;
-      result.borderColor = borderColor;
-    }
-    if (!bgColor && !borderColor && iconType && iconType == "completed") {
-      result.bgColor = "#F0F0F0";
-      result.borderColor = "#E5E5E5";
-    }
-    return result;
-  };
+  const bgColor =
+    iconType === "play" || iconType === "pause"
+      ? "tw-bg-blueLight"
+      : "tw-bg-grayMedium";
+
+  const borderColor =
+    iconType === "play" || iconType === "pause" ? "border-blueMedium" : "";
+
+  const hoverEffect =
+    iconType !== "completed"
+      ? "hover:tw-bg-blueSoft hover:tw-border-secondary"
+      : "";
 
   return (
     <button
-      style={{
-        backgroundColor: colorCombition().bgColor,
-        color: textColor ? textColor : "#2B5BD3",
-        borderColor: colorCombition().borderColor,
-      }}
-      className="tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px]"
+      className={`${bgColor} ${borderColor} ${hoverEffect} tw-w-full tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-colors tw-duration-300`}
     >
-      {text}
+      <span className="tw-text-primary">{text}</span>
+      <Image
+        src={`/assets/${iconType}-vector.svg`}
+        alt="play"
+        width={11.25}
+        height={13.5}
+      />
     </button>
   );
 };

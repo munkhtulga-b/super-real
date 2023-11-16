@@ -1,6 +1,7 @@
 "use client";
 
 import ButtonPrimary from "./buttons/ButtonPrimary";
+import ButtonSecondary from "./buttons/ButtonSecondary";
 import React, { useState } from "react";
 
 type MainOptionsProps = {
@@ -31,17 +32,19 @@ const MainOptions: React.FunctionComponent<MainOptionsProps> = ({
   };
 
   return (
-    <div className="tw-mt-5 tw-flex tw-flex-col tw-gap-y-[14px]">
-      <span>{isDragging ? "dragging" : "not dragging"}</span>
+    <div className="tw-mt-5 tw-flex tw-flex-col">
       <p className="tw-text-base tw-text-grayDark tw-px-4">{message}</p>
       <section
         onMouseMove={handleDrag}
         onMouseDown={() => setIsDragging(true)}
         onMouseLeave={() => setIsDragging(false)}
         onMouseUp={() => setIsDragging(false)}
-        className="scrollbar-container tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-4 tw-overflow-x-hidden tw-whitespace-nowrap"
+        className="scrollbar-container tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-4 tw-overflow-x-hidden tw-whitespace-nowrap tw-mt-[14px]"
       >
         {buttons}
+      </section>
+      <section className="tw-px-4 tw-mt-[25px]">
+        <ButtonSecondary />
       </section>
     </div>
   );
