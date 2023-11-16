@@ -1,4 +1,17 @@
+import { useRef, useEffect } from "react";
+
 const MainVideoFrame = () => {
+  useEffect(() => {
+    const videoElement = document.querySelector(
+      "#video-tag"
+    ) as HTMLVideoElement;
+    setTimeout(() => {
+      console.log(videoRef);
+      console.log(videoElement.ended);
+    }, 1000);
+  }, []);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
   return (
     <div className="tw-mt-[50px] tw-w-full">
       <div className="video-container tw-relative">
@@ -9,6 +22,8 @@ const MainVideoFrame = () => {
           き ま た の A I モ デ ル で す
         </span>
         <video
+          id="video-tag"
+          ref={videoRef}
           style={{ zIndex: 0 }}
           height={"100%"}
           width={"100%"}
