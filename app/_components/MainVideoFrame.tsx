@@ -1,20 +1,17 @@
 import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const MainVideoFrame = () => {
-  useEffect(() => {
-    const videoElement = document.querySelector(
-      "#video-tag"
-    ) as HTMLVideoElement;
-    setTimeout(() => {
-      console.log(videoRef);
-      console.log(videoElement.ended);
-    }, 1000);
-  }, []);
-
   const videoRef = useRef<HTMLVideoElement>(null);
+
   return (
     <div className="tw-mt-[50px] tw-w-full">
-      <div className="video-container tw-relative">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="video-container tw-relative tw-flex tw-justify-center"
+      >
         <span
           style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
           className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 tw-text-base"
@@ -24,15 +21,14 @@ const MainVideoFrame = () => {
         <video
           id="video-tag"
           ref={videoRef}
-          style={{ zIndex: 0 }}
-          height={"100%"}
-          width={"100%"}
+          height={"70%"}
+          width={"70%"}
           autoPlay
           muted
         >
-          <source src="/assets/demo-video-4.mp4" type="video/mp4" />
+          <source src="/assets/1_1.mp4" type="video/mp4" />
         </video>
-      </div>
+      </motion.div>
     </div>
   );
 };

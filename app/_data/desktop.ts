@@ -3,10 +3,11 @@ type ButtonType = {
   text: string;
 };
 
-type OptionType = {
+export type OptionType = {
   buttonId: number;
   id: number;
   text: string;
+  isPlaying?: boolean;
 };
 
 export type DataType = {
@@ -40,7 +41,7 @@ export const options: DataType = {
     {
       buttonId: 1,
       id: 1,
-      text: "金額はいくらですか？",
+      text: "金額はいくらですか？1",
     },
     {
       buttonId: 1,
@@ -67,7 +68,7 @@ export const options: DataType = {
     {
       buttonId: 2,
       id: 1,
-      text: "金額はいくらですか？",
+      text: "金額はいくらですか？2",
     },
     {
       buttonId: 2,
@@ -94,7 +95,7 @@ export const options: DataType = {
     {
       buttonId: 3,
       id: 1,
-      text: "金額はいくらですか？",
+      text: "金額はいくらですか？3",
     },
     {
       buttonId: 3,
@@ -121,7 +122,7 @@ export const options: DataType = {
     {
       buttonId: 4,
       id: 1,
-      text: "金額はいくらですか？",
+      text: "金額はいくらですか？4",
     },
     {
       buttonId: 4,

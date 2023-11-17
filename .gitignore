@@ -19,8 +19,12 @@
 # misc
 .DS_Store
 *.pem
-/public/assets/demo-video-4.mp4
-/public/assets/demo-video.mp4
+/public/assets/1_1.mp4
+/public/assets/2_1.mp4
+/public/assets/3_1.mp4
+/public/assets/4_1.mp4
+/public/assets/5_1.mp4
+/public/assets/6_1.mp4
 
 # debug
 npm-debug.log*

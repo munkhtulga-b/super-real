@@ -17,7 +17,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
         backgroundColor: bgColor ? bgColor : "#D3E7FF",
         color: textColor ? textColor : "#2B5BD3",
       }}
-      className="tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-border-blueMedium"
+      className="tw-snap-center tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-border-blueMedium"
     >
       {text}
     </button>

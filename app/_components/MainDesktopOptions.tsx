@@ -1,17 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonOutlined from "./buttons/ButtonOutlined";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
 import ButtonSecondary from "./buttons/ButtonSecondary";
-import { buttons, options, DataType } from "../_data/desktop";
+import { buttons, options, OptionType, DataType } from "../_data/desktop";
 
 const MainDesktopOptions = () => {
   const [activeButtonId, setActiveButtonId] = useState(buttons[0].id);
-  const activeOptions =
-    options[`button${activeButtonId}` as keyof DataType] || [];
+  const [activeOptions, setActiveOptions] = useState(options["button1"]);
   const handleButtonClick = (buttonId: number): void => {
+    const video = document.querySelector("#video-tag") as HTMLVideoElement;
+    video.pause();
+    const resetOptions = options[`button${buttonId}` as keyof DataType].map(
+      (item) => {
+        return {
+          ...item,
+          isPlaying: false,
+        };
+      }
+    );
     setActiveButtonId(buttonId);
+    setActiveOptions(resetOptions);
+  };
+
+  const handleOptionClick = (option: OptionType) => {
+    const video = document.querySelector("#video-tag") as HTMLVideoElement;
+    if (option.isPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+
+    const updatedOptions: OptionType[] = activeOptions.map((item) => {
+      if (item.id === option.id) {
+        item.isPlaying ? (item.isPlaying = false) : (item.isPlaying = true);
+      }
+      return item;
+    });
+    setActiveOptions(updatedOptions);
+  };
+
+  const optionIconType = (
+    isPlaying: boolean
+  ): "play" | "pause" | "completed" => {
+    let result: "play" | "pause" | "completed" = "play";
+    if (isPlaying) {
+      result = isPlaying ? "pause" : "play";
+    }
+    return result;
   };
 
   return (
@@ -39,16 +76,21 @@ const MainDesktopOptions = () => {
           <ul className="tw-m-0 tw-grid tw-grid-cols-1 tw-auto-rows-min tw-gap-y-3">
             {activeOptions.map((option) => {
               return (
-                <li key={option.id}>
-                  <ButtonPrimarySuffix text={option.text} iconType="play" />
+                <li onClick={() => handleOptionClick(option)} key={option.id}>
+                  <ButtonPrimarySuffix
+                    text={option.text}
+                    iconType={optionIconType(option.isPlaying ?? false)}
+                  />
                 </li>
               );
             })}
           </ul>
         </section>
       </div>
-      <div className="tw-mt-[46.5px] tw-pl-[123.5px] tw-pr-[66.5px]">
-        <ButtonSecondary />
+      <div className="tw-mt-[46.5px] tw-px-[57.5px] tw-flex tw-justify-center">
+        <section className="tw-w-[215px]">
+          <ButtonSecondary />
+        </section>
       </div>
     </div>
   );
