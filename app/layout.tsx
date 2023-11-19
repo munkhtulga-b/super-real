@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import { GlobalProvider } from "./_redux/provider";
 
 const font = Noto_Sans_JP({ subsets: ["latin"], weight: "500" });
 
@@ -16,9 +17,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>
-        <main className="tw-min-h-screen">{children}</main>
+      
+<body className={font.className}>
+
+        <main className="tw-min-h-screen">
+        <GlobalProvider >
+            {children}
+          </GlobalProvider>
+        </main>
+        
       </body>
+      
+      
     </html>
   );
 }

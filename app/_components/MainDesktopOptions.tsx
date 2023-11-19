@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ButtonOutlined from "./buttons/ButtonOutlined";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
 import ButtonSecondary from "./buttons/ButtonSecondary";
 import { buttons, options, OptionType, DataType } from "../_data/desktop";
+import { useAppSelector } from "../_redux/config";
+
 
 const MainDesktopOptions = () => {
   const [activeButtonId, setActiveButtonId] = useState(buttons[0].id);
@@ -51,9 +53,14 @@ const MainDesktopOptions = () => {
     return result;
   };
 
+  const globalState = useAppSelector((state) => state.test.value)
+
   return (
     <div className="tw-w-fit tw-h-auto tw-flex tw-flex-col">
-      <div className="tw-rounded-[24px] tw-shadow tw-py-[25px] tw-mt-[225px]">
+      <div className="tw-rounded-[24px] tw-shadow tw-py-[25px]">
+        <span>
+          {globalState}
+        </span>
         <section className="tw-px-[22px]">
           <ul className="tw-m-0 tw-flex tw-justify-start tw-items-center tw-w-full tw-gap-2">
             {buttons.map((button) => {

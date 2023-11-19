@@ -13,7 +13,7 @@ const DesktopLayout = () => {
         <MainHeader />
         <MainVideoFrame />
       </section>
-      <section className="tw-grid tw-auto-rows-min tw-place-items-center md:tw-px-[50px] xl:tw-px-[157.5px]">
+      <section className="tw-grid tw-auto-rows-min tw-place-content-center md:tw-px-[50px] xl:tw-px-[157.5px]">
         <MainDesktopOptions />
       </section>
     </div>
