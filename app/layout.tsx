@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { GlobalProvider } from "./_redux/provider";
 
-const font = Noto_Sans_JP({ subsets: ["latin"], weight: "500" });
+const font = localFont({
+  src: "../public/fonts/HiraginoKakuGothicProN.otf",
+  weight: "600",
+});
 
 export const metadata: Metadata = {
   title: "Super real",

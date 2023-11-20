@@ -15,7 +15,7 @@ const MainVideoFrame = () => {
       >
         <span
           style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
-          className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 tw-text-base tw-whitespace-nowrap"
+          className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 md:tw-text-base tw-whitespace-nowrap"
         >
           き ま た の A I モ デ ル で す
         </span>
@@ -25,7 +25,6 @@ const MainVideoFrame = () => {
           muted
           src="https://superreal.reddtech.ai/video/japan.json/master.m3u8"
         />
-        ,
       </motion.div>
     </div>
   );

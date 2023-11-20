@@ -1,0 +1,258 @@
+[
+    {
+        "buttonId": 1,
+        "buttonText": "予約と金額",
+        "buttonOptions": [
+            {
+                "id": 1,
+                "text": "金額はいくらですか？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 4,
+                "text": "ウェブ問診とはなんですか?",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ],
+        "buttonSuggestions": [
+            {
+                "id": 1,
+                "text": "金額",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ]
+    },
+    {
+        "buttonId": 2,
+        "buttonText": "効果",
+        "buttonOptions": [
+            {
+                "id": 1,
+                "text": "金額はいくらですか？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 4,
+                "text": "ウェブ問診とはなんですか?",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ],
+        "buttonSuggestions": [
+            {
+                "id": 1,
+                "text": "金額",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ]
+    },
+    {
+        "buttonId": 3,
+        "buttonText": "注意点",
+        "buttonOptions": [
+            {
+                "id": 1,
+                "text": "金額はいくらですか？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 4,
+                "text": "ウェブ問診とはなんですか?",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ],
+        "buttonSuggestions": [
+            {
+                "id": 1,
+                "text": "金額",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ]
+    },
+    {
+        "buttonId": 4,
+        "buttonText": "接種後",
+        "buttonOptions": [
+            {
+                "id": 1,
+                "text": "金額はいくらですか？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約の方法は？",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 4,
+                "text": "ウェブ問診とはなんですか?",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ],
+        "buttonSuggestions": [
+            {
+                "id": 1,
+                "text": "金額",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 2,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            },
+            {
+                "id": 3,
+                "text": "予約",
+                "url": "https://www.google.com",
+                "isPlaying": false,
+                "isPlayed": false
+            }
+        ]
+    }
+]

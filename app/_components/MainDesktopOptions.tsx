@@ -4,7 +4,7 @@ import { useState } from "react";
 import ButtonOutlined from "./buttons/ButtonOutlined";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
 import ButtonSecondary from "./buttons/ButtonSecondary";
-import { buttons, options, OptionType, DataType } from "../_data/desktop";
+import { buttons, options, OptionType, DataType } from "../_resources/desktop";
 import { useAppSelector } from "../_redux/config";
 
 const MainDesktopOptions = () => {

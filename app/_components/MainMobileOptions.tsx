@@ -1,27 +1,71 @@
 "use client";
 
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../_redux/config";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 import ButtonSecondary from "./buttons/ButtonSecondary";
-import React, { useState } from "react";
+import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
+import { ButtonType, updateActiveButton } from "../_redux/stores/options-slice";
+import Image from "next/image";
 
-type MainOptionsProps = {
-  message: string;
-};
+const MainOptions: React.FunctionComponent = () => {
+  const buttons = useAppSelector((state) => state.store.buttons);
+  const activeButton = useAppSelector((state) => state.store.activeButton);
 
-const MainOptions: React.FunctionComponent<MainOptionsProps> = ({
-  message,
-}) => {
-  const buttons: React.ReactElement[] = [];
+  const dispatch = useDispatch();
 
-  for (let i = 0; i < 10; i++) {
-    buttons.push(<ButtonPrimary key={i} text={`予約と金額`} />);
-  }
+  const handleButtonClick = (button: ButtonType) => {
+    dispatch(updateActiveButton({ button }));
+  };
+
+  const returnComponent = () => {
+    return (
+      <button
+        onClick={() => dispatch(updateActiveButton({ button: null }))}
+        className="tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-[18px]"
+      >
+        <Image
+          src={"/assets/return-arrow.svg"}
+          alt={"return"}
+          width={0}
+          height={0}
+          style={{ width: "auto", height: "auto" }}
+        />
+        <span className="tw-text-base tw-text-grayDark">予約と金額</span>
+      </button>
+    );
+  };
 
   return (
     <div className="tw-mt-5 tw-flex tw-flex-col">
-      <p className="tw-text-base tw-text-grayDark tw-px-4">{message}</p>
+      {activeButton ? (
+        returnComponent()
+      ) : (
+        <p className="tw-text-base tw-text-grayDark tw-px-4">
+          質問があります？
+        </p>
+      )}
+
       <section className="scrollbar-container tw-snap-x tw-snap-start tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-4 tw-overflow-x-scroll tw-whitespace-nowrap tw-mt-[14px]">
-        {buttons}
+        {!activeButton &&
+          buttons.map((button) => (
+            <ButtonPrimary
+              onClickEvent={() => handleButtonClick(button)}
+              key={button.buttonId}
+              text={button.buttonText}
+              button={button}
+            />
+          ))}
+        {activeButton &&
+          activeButton.buttonOptions.map((option) => {
+            return (
+              <ButtonPrimarySuffix
+                iconType="play"
+                key={option.id}
+                text={option.text}
+              />
+            );
+          })}
       </section>
       <section className="tw-px-4 tw-mt-[25px] tw-mb-[45px]">
         <ButtonSecondary />
