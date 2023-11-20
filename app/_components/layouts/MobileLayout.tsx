@@ -1,6 +1,6 @@
 import MainHeader from "../MainHeader";
 import MainVideoFrame from "../MainVideoFrame";
-import MainOptions from "../MainOptions";
+import MainOptions from "../MainMobileOptions";
 
 const MobileLayout = () => {
   return (

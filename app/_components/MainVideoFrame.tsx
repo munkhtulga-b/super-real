@@ -1,8 +1,9 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import ReactHlsPlayer from "react-hls-player";
 
 const MainVideoFrame = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<HTMLVideoElement | null>(null);
 
   return (
     <div className="tw-mt-[50px] tw-w-full">
@@ -18,16 +19,13 @@ const MainVideoFrame = () => {
         >
           き ま た の A I モ デ ル で す
         </span>
-        <video
-          id="video-tag"
-          ref={videoRef}
-          height={"70%"}
-          width={"70%"}
+        <ReactHlsPlayer
+          playerRef={playerRef}
           autoPlay
           muted
-        >
-          <source src="/assets/1_1.mp4" type="video/mp4" />
-        </video>
+          src="https://superreal.reddtech.ai/video/japan.json/master.m3u8"
+        />
+        ,
       </motion.div>
     </div>
   );

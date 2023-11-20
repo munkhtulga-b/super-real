@@ -17,18 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      
-<body className={font.className}>
-
+      <body className={font.className}>
         <main className="tw-min-h-screen">
-        <GlobalProvider >
-            {children}
-          </GlobalProvider>
+          <GlobalProvider>{children}</GlobalProvider>
         </main>
-        
       </body>
-      
-      
     </html>
   );
 }
