@@ -3,15 +3,17 @@ import { useAppSelector } from "../_redux/config";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
-import { updateVideoEnded } from "../_redux/stores/options-slice";
+import { updateOption, onVideoEnd } from "../_redux/stores/options-slice";
 
 const MainVideoFrame = () => {
   const dispatch = useDispatch();
   const playerRef = useRef<HTMLVideoElement | null>(null);
-  const videoURL = useAppSelector((state) => state.store.videoUrl);
+  const activeOption = useAppSelector((state) => state.store.activeOption);
+  const videoURL = activeOption?.url;
 
   const handleVideoEnd = () => {
-    dispatch(updateVideoEnded({ isVideoEnded: true }));
+    dispatch(updateOption({ option: null }));
+    dispatch(onVideoEnd({ option: activeOption! }));
   };
 
   return (
@@ -21,6 +23,7 @@ const MainVideoFrame = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="video-container tw-relative tw-flex tw-justify-center"
+        style={{ minHeight: "calc(100vh - 50vh)" }}
       >
         <span
           style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
@@ -32,8 +35,14 @@ const MainVideoFrame = () => {
           playerRef={playerRef}
           autoPlay
           muted
-          src={videoURL}
+          loop={videoURL ? false : true}
+          src={
+            videoURL
+              ? videoURL
+              : "https://superreal.reddtech.ai/video/0_1.json/master.m3u8"
+          }
           onEnded={handleVideoEnd}
+          style={{ width: "auto", maxHeight: "calc(100vh - 50vh)" }}
         />
       </motion.div>
     </div>

@@ -9,14 +9,14 @@ import {
   ButtonType,
   OptionType,
   updateActiveButton,
-  updateOptionIsPlaying,
-  updateVideoUrl,
+  updateOption,
 } from "../_redux/stores/options-slice";
 import Image from "next/image";
 
 const MainOptions: React.FunctionComponent = () => {
   const buttons = useAppSelector((state) => state.store.buttons);
   const activeButton = useAppSelector((state) => state.store.activeButton);
+  const activeOption = useAppSelector((state) => state.store.activeOption);
 
   const dispatch = useDispatch();
 
@@ -25,13 +25,20 @@ const MainOptions: React.FunctionComponent = () => {
   };
 
   const handleOptionClick = (option: OptionType) => {
-    const clickedOption = activeButton?.buttonOptions.find((item) => {
-      return item.id === option.id;
-    });
-    if (clickedOption) {
-      dispatch(updateOptionIsPlaying({ option: clickedOption }));
+    dispatch(updateOption({ option: option }));
+  };
+
+  const handleIconType = (option: OptionType, activeOption: OptionType) => {
+    let result: "play" | "pause" | "completed" = "play";
+    if (!option.isPlayed) {
+      result =
+        option.id === activeOption?.id && activeOption?.isPlaying
+          ? "pause"
+          : "play";
+    } else {
+      result = "completed";
     }
-    dispatch(updateVideoUrl({ videoUrl: option.url }));
+    return result;
   };
 
   const returnComponent = () => {
@@ -76,7 +83,7 @@ const MainOptions: React.FunctionComponent = () => {
           activeButton.buttonOptions.map((option) => {
             return (
               <ButtonPrimarySuffix
-                iconType={option.isPlaying ? "pause" : "play"}
+                iconType={handleIconType(option, activeOption as OptionType)}
                 key={option.id}
                 text={option.text}
                 option={option}

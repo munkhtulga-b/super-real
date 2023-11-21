@@ -20,15 +20,13 @@ export type OptionType = {
 export interface OptionsState {
   buttons: ButtonType[];
   activeButton: ButtonType | null;
-  videoUrl: string;
-  isVideoEnded: boolean;
+  activeOption: OptionType | null;
 }
 
 const initialState: OptionsState = {
   buttons: data,
   activeButton: null,
-  videoUrl: "https://superreal.reddtech.ai/video/japan.json/master.m3u8",
-  isVideoEnded: false,
+  activeOption: null,
 };
 
 export const optionsSlice = createSlice({
@@ -41,32 +39,28 @@ export const optionsSlice = createSlice({
     ) {
       state.activeButton = action.payload.button;
     },
-    updateOptionIsPlaying(
-      state,
-      action: PayloadAction<{ option: OptionType }>
-    ) {
-      const idx = state.activeButton?.buttonOptions
-        .map((option) => option.id)
-        .indexOf(action.payload.option.id);
+    updateOption(state, action: PayloadAction<{ option: OptionType | null }>) {
+      const updated = action.payload.option
+        ? {
+            ...action.payload.option,
+            isPlaying: !action.payload.option.isPlaying,
+          }
+        : null;
+      state.activeOption = updated;
+      console.log(state.activeOption);
+    },
+    onVideoEnd(state, action: PayloadAction<{ option: OptionType }>) {
+      const idx = state.activeButton?.buttonOptions.findIndex((option) => {
+        return option.id === action.payload.option.id;
+      });
       if (idx !== undefined && idx !== -1) {
-        state.activeButton!.buttonOptions[idx].isPlaying =
-          !state.activeButton!.buttonOptions[idx].isPlaying;
+        state.activeButton!.buttonOptions[idx].isPlayed = true;
       }
-    },
-    updateVideoEnded(state, action: PayloadAction<{ isVideoEnded: boolean }>) {
-      state.isVideoEnded = action.payload.isVideoEnded;
-    },
-    updateVideoUrl(state, action: PayloadAction<{ videoUrl: string }>) {
-      state.videoUrl = action.payload.videoUrl;
     },
   },
 });
 
-export const {
-  updateActiveButton,
-  updateVideoEnded,
-  updateVideoUrl,
-  updateOptionIsPlaying,
-} = optionsSlice.actions;
+export const { updateActiveButton, updateOption, onVideoEnd } =
+  optionsSlice.actions;
 
 export default optionsSlice.reducer;
