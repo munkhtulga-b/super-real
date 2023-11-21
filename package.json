@@ -10,6 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^4.41.2",
     "@reduxjs/toolkit": "^1.9.7",
     "framer-motion": "^10.16.5",
     "next": "14.0.2",
