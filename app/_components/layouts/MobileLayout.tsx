@@ -7,7 +7,7 @@ const MobileLayout = () => {
     <div className="tw-grid tw-grid-cols-1 tw-auto-rows-min">
       <MainHeader />
       <MainVideoFrame />
-      <MainOptions message="質問があります？" />
+      <MainOptions />
     </div>
   );
 };

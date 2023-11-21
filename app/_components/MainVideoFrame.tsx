@@ -1,9 +1,18 @@
 import { useRef, useEffect } from "react";
+import { useAppSelector } from "../_redux/config";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
+import { updateVideoEnded } from "../_redux/stores/options-slice";
 
 const MainVideoFrame = () => {
+  const dispatch = useDispatch();
   const playerRef = useRef<HTMLVideoElement | null>(null);
+  const videoURL = useAppSelector((state) => state.store.videoUrl);
+
+  const handleVideoEnd = () => {
+    dispatch(updateVideoEnded({ isVideoEnded: true }));
+  };
 
   return (
     <div className="tw-mt-[50px] tw-w-full">
@@ -23,7 +32,8 @@ const MainVideoFrame = () => {
           playerRef={playerRef}
           autoPlay
           muted
-          src="https://superreal.reddtech.ai/video/japan.json/master.m3u8"
+          src={videoURL}
+          onEnded={handleVideoEnd}
         />
       </motion.div>
     </div>

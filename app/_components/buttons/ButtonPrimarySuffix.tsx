@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { OptionType } from "@/app/_redux/stores/options-slice";
 
 type ButtonProps = {
   text: string;
@@ -8,11 +9,15 @@ type ButtonProps = {
    * @prop must be "play" | "pause" | "completed"
    */
   iconType: "play" | "pause" | "completed";
+  option?: OptionType;
+  onClickEvent?: (option: OptionType) => void;
 };
 
 const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
   text,
   iconType,
+  option,
+  onClickEvent,
 }) => {
   const bgColor =
     iconType === "play" || iconType === "pause"
@@ -27,8 +32,15 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
       ? "hover:tw-bg-blueSoft hover:tw-border-secondary"
       : "";
 
+  const handleClick = () => {
+    if (onClickEvent && option) {
+      onClickEvent(option);
+    }
+  };
+
   return (
     <button
+      onClick={handleClick}
       className={`${bgColor} ${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-colors tw-duration-300`}
     >
       <span className="tw-text-primary">{text}</span>

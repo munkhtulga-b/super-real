@@ -5,7 +5,13 @@ import { useAppSelector } from "../_redux/config";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 import ButtonSecondary from "./buttons/ButtonSecondary";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
-import { ButtonType, updateActiveButton } from "../_redux/stores/options-slice";
+import {
+  ButtonType,
+  OptionType,
+  updateActiveButton,
+  updateOptionIsPlaying,
+  updateVideoUrl,
+} from "../_redux/stores/options-slice";
 import Image from "next/image";
 
 const MainOptions: React.FunctionComponent = () => {
@@ -16,6 +22,16 @@ const MainOptions: React.FunctionComponent = () => {
 
   const handleButtonClick = (button: ButtonType) => {
     dispatch(updateActiveButton({ button }));
+  };
+
+  const handleOptionClick = (option: OptionType) => {
+    const clickedOption = activeButton?.buttonOptions.find((item) => {
+      return item.id === option.id;
+    });
+    if (clickedOption) {
+      dispatch(updateOptionIsPlaying({ option: clickedOption }));
+    }
+    dispatch(updateVideoUrl({ videoUrl: option.url }));
   };
 
   const returnComponent = () => {
@@ -60,9 +76,11 @@ const MainOptions: React.FunctionComponent = () => {
           activeButton.buttonOptions.map((option) => {
             return (
               <ButtonPrimarySuffix
-                iconType="play"
+                iconType={option.isPlaying ? "pause" : "play"}
                 key={option.id}
                 text={option.text}
+                option={option}
+                onClickEvent={() => handleOptionClick(option)}
               />
             );
           })}
