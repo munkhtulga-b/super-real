@@ -10,8 +10,10 @@ import {
   OptionType,
   updateActiveButton,
   updateOption,
+  updateOptionFromList,
 } from "../_redux/stores/options-slice";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MainOptions: React.FunctionComponent = () => {
   const buttons = useAppSelector((state) => state.store.buttons);
@@ -26,6 +28,13 @@ const MainOptions: React.FunctionComponent = () => {
 
   const handleOptionClick = (option: OptionType) => {
     dispatch(updateOption({ option: option }));
+    dispatch(updateOptionFromList({ option }));
+  };
+
+  const handleReturn = () => {
+    console.log("return clicked");
+    dispatch(updateActiveButton({ button: null }));
+    dispatch(updateOption({ option: null }));
   };
 
   const handleIconType = (option: OptionType, activeOption: OptionType) => {
@@ -44,7 +53,7 @@ const MainOptions: React.FunctionComponent = () => {
   const returnComponent = () => {
     return (
       <button
-        onClick={() => dispatch(updateActiveButton({ button: null }))}
+        onClick={handleReturn}
         className="tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-[18px]"
       >
         <Image
@@ -60,42 +69,60 @@ const MainOptions: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="tw-mt-5 tw-flex tw-flex-col">
-      {activeButton ? (
-        returnComponent()
-      ) : (
-        <p className="tw-text-base tw-text-grayDark tw-px-4">
-          質問があります？
-        </p>
-      )}
-
-      <section className="scrollbar-container tw-snap-x tw-snap-start tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-4 tw-overflow-x-scroll tw-whitespace-nowrap tw-mt-[14px]">
-        {!activeButton &&
-          buttons.map((button) => (
-            <ButtonPrimary
-              onClickEvent={() => handleButtonClick(button)}
-              key={button.buttonId}
-              text={button.buttonText}
-              button={button}
-            />
-          ))}
-        {activeButton &&
-          activeButton.buttonOptions.map((option) => {
-            return (
-              <ButtonPrimarySuffix
-                iconType={handleIconType(option, activeOption as OptionType)}
-                key={option.id}
-                text={option.text}
-                option={option}
-                onClickEvent={() => handleOptionClick(option)}
-              />
-            );
-          })}
-      </section>
-      <section className="tw-px-4 tw-mt-[25px] tw-mb-[45px]">
-        <ButtonSecondary />
-      </section>
-    </div>
+    <AnimatePresence mode="wait">
+      <div className="tw-mt-5 tw-flex tw-flex-col">
+        <motion.div
+          key={activeButton ? "buttons" : "options"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          {activeButton ? (
+            // Your first component
+            returnComponent()
+          ) : (
+            // Your second component
+            <p
+              key={"placeholder"}
+              className="tw-text-base tw-text-grayDark tw-px-4 tw-h-[27px]"
+            >
+              質問があります？
+            </p>
+          )}
+          {/* Rest of your components */}
+          <section className="scrollbar-container tw-snap-x tw-snap-start tw-px-4 tw-flex tw-justify-start tw-items-center tw-gap-x-4 tw-overflow-x-scroll tw-whitespace-nowrap tw-mt-[14px]">
+            {!activeButton &&
+              buttons.map((button) => (
+                <ButtonPrimary
+                  onClickEvent={() => handleButtonClick(button)}
+                  key={button.buttonId}
+                  text={button.buttonText}
+                  button={button}
+                />
+              ))}
+            {activeButton &&
+              activeButton.buttonOptions.map((option) => {
+                return (
+                  <ButtonPrimarySuffix
+                    iconType={handleIconType(
+                      option,
+                      activeOption as OptionType
+                    )}
+                    key={option.id}
+                    text={option.text}
+                    option={option}
+                    onClickEvent={() => handleOptionClick(option)}
+                  />
+                );
+              })}
+          </section>
+        </motion.div>
+        <section className="tw-px-4 tw-mt-[25px] tw-mb-[45px]">
+          <ButtonSecondary />
+        </section>
+      </div>
+    </AnimatePresence>
   );
 };
 

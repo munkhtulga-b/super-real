@@ -16,6 +16,14 @@ const MainVideoFrame = () => {
     dispatch(onVideoEnd({ option: activeOption! }));
   };
 
+  useEffect(() => {
+    if (activeOption?.isPlaying) {
+      playerRef.current?.play();
+    } else {
+      playerRef.current?.pause();
+    }
+  }, [activeOption]);
+
   return (
     <div className="tw-mt-[50px] tw-w-full">
       <motion.div
