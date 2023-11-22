@@ -39,25 +39,25 @@ export const optionsSlice = createSlice({
     ) {
       state.activeButton = action.payload.button;
     },
-    updateOptionFromList(state, action: PayloadAction<{ option: OptionType }>) {
-      const idx = state.activeButton?.buttonOptions.findIndex((option) => {
-        return option.id === action.payload.option.id;
-      });
-      if (idx !== undefined && idx !== -1) {
-        state.activeButton!.buttonOptions[idx] = {
-          ...action.payload.option,
-          isPlaying: !action.payload.option.isPlaying,
-        };
-      }
-    },
-    updateOption(state, action: PayloadAction<{ option: OptionType | null }>) {
-      const updated = action.payload.option
+    updateOption(
+      state,
+      action: PayloadAction<{ option: OptionType | null; idx?: number }>
+    ) {
+      const updatedOption = action.payload.option
         ? {
             ...action.payload.option,
-            isPlaying: !action.payload.option.isPlaying,
+            isPlaying:
+              !state.activeButton!.buttonOptions[action.payload.idx!].isPlaying,
           }
         : null;
-      state.activeOption = updated;
+      const updatedArray = state.activeButton!.buttonOptions.map((option) => {
+        if (option.id === updatedOption?.id) {
+          return updatedOption!;
+        }
+        return option;
+      });
+      state.activeButton!.buttonOptions = updatedArray;
+      state.activeOption = updatedOption;
     },
     onVideoEnd(state, action: PayloadAction<{ option: OptionType }>) {
       const idx = state.activeButton?.buttonOptions.findIndex((option) => {
@@ -70,11 +70,7 @@ export const optionsSlice = createSlice({
   },
 });
 
-export const {
-  updateActiveButton,
-  updateOption,
-  updateOptionFromList,
-  onVideoEnd,
-} = optionsSlice.actions;
+export const { updateActiveButton, updateOption, onVideoEnd } =
+  optionsSlice.actions;
 
 export default optionsSlice.reducer;

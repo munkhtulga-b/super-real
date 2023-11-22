@@ -10,7 +10,6 @@ import {
   OptionType,
   updateActiveButton,
   updateOption,
-  updateOptionFromList,
 } from "../_redux/stores/options-slice";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,9 +25,8 @@ const MainOptions: React.FunctionComponent = () => {
     dispatch(updateActiveButton({ button }));
   };
 
-  const handleOptionClick = (option: OptionType) => {
-    dispatch(updateOption({ option: option }));
-    dispatch(updateOptionFromList({ option }));
+  const handleOptionClick = (option: OptionType, idx: number) => {
+    dispatch(updateOption({ option: option, idx }));
   };
 
   const handleReturn = () => {
@@ -102,7 +100,7 @@ const MainOptions: React.FunctionComponent = () => {
                 />
               ))}
             {activeButton &&
-              activeButton.buttonOptions.map((option) => {
+              activeButton.buttonOptions.map((option, idx) => {
                 return (
                   <ButtonPrimarySuffix
                     iconType={handleIconType(
@@ -112,7 +110,7 @@ const MainOptions: React.FunctionComponent = () => {
                     key={option.id}
                     text={option.text}
                     option={option}
-                    onClickEvent={() => handleOptionClick(option)}
+                    onClickEvent={() => handleOptionClick(option, idx)}
                   />
                 );
               })}
