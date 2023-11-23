@@ -1,47 +1,35 @@
 "use client";
 
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../_redux/config";
+import { useState, useEffect, useRef } from "react";
+
 import ButtonPrimary from "./buttons/ButtonPrimary";
 import ButtonSecondary from "./buttons/ButtonSecondary";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
-import {
-  ButtonType,
-  OptionType,
-  updateActiveButton,
-  updateOption,
-} from "../_redux/stores/options-slice";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 
-const MainOptions: React.FunctionComponent = () => {
-  const buttons = useAppSelector((state) => state.store.buttons);
-  const activeButton = useAppSelector((state) => state.store.activeButton);
-  const activeOption = useAppSelector((state) => state.store.activeOption);
+interface MobileOptionsProps {
+  buttons: ButtonType[];
+  activeButton: ButtonType | null;
+  current: number | null;
+  handleButtonClick: (button: ButtonType) => void;
+  handleOptionClick: (option: OptionType) => void;
+  handleReturn: () => void;
+}
 
-  const dispatch = useDispatch();
-
-  const handleButtonClick = (button: ButtonType) => {
-    dispatch(updateActiveButton({ button }));
-  };
-
-  const handleOptionClick = (option: OptionType, idx: number) => {
-    dispatch(updateOption({ option: option, idx }));
-  };
-
-  const handleReturn = () => {
-    console.log("return clicked");
-    dispatch(updateActiveButton({ button: null }));
-    dispatch(updateOption({ option: null }));
-  };
-
-  const handleIconType = (option: OptionType, activeOption: OptionType) => {
+const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
+  buttons,
+  activeButton,
+  current,
+  handleButtonClick,
+  handleOptionClick,
+  handleReturn,
+}) => {
+  const handleIconType = (option: OptionType) => {
     let result: "play" | "pause" | "completed" = "play";
     if (!option.isPlayed) {
-      result =
-        option.id === activeOption?.id && activeOption?.isPlaying
-          ? "pause"
-          : "play";
+      result = option.id === current ? "pause" : "play";
     } else {
       result = "completed";
     }
@@ -103,14 +91,11 @@ const MainOptions: React.FunctionComponent = () => {
               activeButton.buttonOptions.map((option, idx) => {
                 return (
                   <ButtonPrimarySuffix
-                    iconType={handleIconType(
-                      option,
-                      activeOption as OptionType
-                    )}
+                    iconType={handleIconType(option)}
                     key={option.id}
                     text={option.text}
                     option={option}
-                    onClickEvent={() => handleOptionClick(option, idx)}
+                    onClickEvent={() => handleOptionClick(option)}
                   />
                 );
               })}

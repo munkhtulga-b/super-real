@@ -8,35 +8,40 @@
                 "text": "金額はいくらですか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 2,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 3,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 4,
                 "text": "ウェブ問診とはなんですか?",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 5,
                 "text": "その他",
                 "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             }
         ],
         "buttonSuggestions": [
@@ -72,35 +77,40 @@
                 "text": "金額はいくらですか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 2,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 3,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 4,
                 "text": "ウェブ問診とはなんですか?",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 5,
                 "text": "その他",
                 "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             }
         ],
         "buttonSuggestions": [
@@ -136,35 +146,40 @@
                 "text": "金額はいくらですか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 2,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 3,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 4,
                 "text": "ウェブ問診とはなんですか?",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 5,
                 "text": "その他",
                 "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             }
         ],
         "buttonSuggestions": [
@@ -200,35 +215,40 @@
                 "text": "金額はいくらですか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 2,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 3,
                 "text": "予約の方法は？",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 4,
                 "text": "ウェブ問診とはなんですか?",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             },
             {
                 "id": 5,
                 "text": "その他",
                 "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
-                "isPlayed": false
+                "isPlayed": false,
+                "isCurrent": false
             }
         ],
         "buttonSuggestions": [

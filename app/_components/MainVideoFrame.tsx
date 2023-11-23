@@ -1,28 +1,41 @@
-import { useRef, useEffect } from "react";
-import { useAppSelector } from "../_redux/config";
+import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
-import { updateOption, onVideoEnd } from "../_redux/stores/options-slice";
+import { ButtonType, onVideoEnd } from "../_redux/stores/options-slice";
 
-const MainVideoFrame = () => {
+interface VideoFrameProps {
+  activeButton: ButtonType | null;
+  current: number | null;
+}
+
+const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
+  activeButton,
+  current,
+}) => {
   const dispatch = useDispatch();
   const playerRef = useRef<HTMLVideoElement | null>(null);
-  const activeOption = useAppSelector((state) => state.store.activeOption);
-  const videoURL = activeOption?.url;
+  const [videoURL, setVideoURL] = useState<string | null>(null);
 
   const handleVideoEnd = () => {
-    dispatch(updateOption({ option: null }));
-    dispatch(onVideoEnd({ option: activeOption! }));
+    setVideoURL(null);
+    dispatch(onVideoEnd());
   };
 
   useEffect(() => {
-    if (activeOption?.isPlaying) {
-      playerRef.current?.play();
+    if (current) {
+      const currentOption = activeButton?.buttonOptions.find((item) => {
+        return item.id === current;
+      });
+      if (currentOption) {
+        setVideoURL(currentOption?.url);
+        playerRef.current?.play();
+      }
     } else {
+      setVideoURL(null);
       playerRef.current?.pause();
     }
-  }, [activeOption]);
+  }, [current]);
 
   return (
     <div className="tw-mt-[50px] tw-w-full">
@@ -49,6 +62,9 @@ const MainVideoFrame = () => {
               ? videoURL
               : "https://superreal.reddtech.ai/video/0_1.json/master.m3u8"
           }
+          controls={false}
+          webkit-playsinline
+          playsInline
           onEnded={handleVideoEnd}
           style={{ width: "auto", maxHeight: "calc(100vh - 50vh)" }}
         />
