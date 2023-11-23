@@ -18,6 +18,12 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   const [videoURL, setVideoURL] = useState<string | null>(null);
 
   useEffect(() => {
+    setTimeout(() => {
+      playerRef.current?.play();
+    }, 100);
+  }, []);
+
+  useEffect(() => {
     if (current) {
       const currentOption = activeButton?.buttonOptions.find((item) => {
         return item.id === current;

@@ -1,53 +1,31 @@
 "use client";
 
-import { useState } from "react";
 import ButtonOutlined from "./buttons/ButtonOutlined";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
 import ButtonSecondary from "./buttons/ButtonSecondary";
-import { buttons, options, OptionType, DataType } from "../_resources/desktop";
-import { useAppSelector } from "../_redux/config";
+import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 
-const MainDesktopOptions = () => {
-  const [activeButtonId, setActiveButtonId] = useState(buttons[0].id);
-  const [activeOptions, setActiveOptions] = useState(options["button1"]);
-  const handleButtonClick = (buttonId: number): void => {
-    const video = document.querySelector("#video-tag") as HTMLVideoElement;
-    video.pause();
-    const resetOptions = options[`button${buttonId}` as keyof DataType].map(
-      (item) => {
-        return {
-          ...item,
-          isPlaying: false,
-        };
-      }
-    );
-    setActiveButtonId(buttonId);
-    setActiveOptions(resetOptions);
-  };
+interface DesktopOptionsProp {
+  buttons: ButtonType[];
+  activeButton: ButtonType;
+  current: number | null;
+  handleButtonClick: (button: ButtonType) => void;
+  handleOptionClick: (option: OptionType) => void;
+}
 
-  const handleOptionClick = (option: OptionType) => {
-    const video = document.querySelector("#video-tag") as HTMLVideoElement;
-    if (option.isPlaying) {
-      video.pause();
-    } else {
-      video.play();
-    }
-
-    const updatedOptions: OptionType[] = activeOptions.map((item) => {
-      if (item.id === option.id) {
-        item.isPlaying ? (item.isPlaying = false) : (item.isPlaying = true);
-      }
-      return item;
-    });
-    setActiveOptions(updatedOptions);
-  };
-
-  const optionIconType = (
-    isPlaying: boolean
-  ): "play" | "pause" | "completed" => {
+const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
+  buttons,
+  activeButton,
+  current,
+  handleButtonClick,
+  handleOptionClick,
+}) => {
+  const handleIconType = (option: OptionType) => {
     let result: "play" | "pause" | "completed" = "play";
-    if (isPlaying) {
-      result = isPlaying ? "pause" : "play";
+    if (!option.isPlayed) {
+      result = option.id === current ? "pause" : "play";
+    } else {
+      result = "completed";
     }
     return result;
   };
@@ -60,13 +38,13 @@ const MainDesktopOptions = () => {
             {buttons.map((button) => {
               return (
                 <li
-                  key={button.id}
-                  onClick={() => handleButtonClick(button.id)}
+                  key={button.buttonId}
+                  onClick={() => handleButtonClick(button)}
                 >
                   <ButtonOutlined
-                    text={button.text}
-                    buttonId={button.id}
-                    activeButtonId={activeButtonId}
+                    activeButton={activeButton}
+                    text={button.buttonText}
+                    button={button}
                   />
                 </li>
               );
@@ -75,12 +53,15 @@ const MainDesktopOptions = () => {
         </section>
         <section className="tw-px-[42.5px] tw-mt-5">
           <ul className="tw-m-0 tw-grid tw-grid-cols-1 tw-auto-rows-min tw-gap-y-3">
-            {activeOptions.map((option) => {
+            {activeButton?.buttonOptions.map((option) => {
               return (
                 <li onClick={() => handleOptionClick(option)} key={option.id}>
                   <ButtonPrimarySuffix
+                    iconType={handleIconType(option)}
+                    key={option.id}
                     text={option.text}
-                    iconType={optionIconType(option.isPlaying ?? false)}
+                    option={option}
+                    onClickEvent={() => handleOptionClick(option)}
                   />
                 </li>
               );

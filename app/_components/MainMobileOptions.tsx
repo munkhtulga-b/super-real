@@ -26,7 +26,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
 }) => {
   const handleIconType = (option: OptionType) => {
     let result: "play" | "pause" | "completed" = "play";
-    if (option.isVisible) {
+    if (!option.isPlayed) {
       result = option.id === current ? "pause" : "play";
     } else {
       result = "completed";

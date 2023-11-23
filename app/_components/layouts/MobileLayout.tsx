@@ -11,6 +11,7 @@ import {
 } from "../../_redux/stores/options-slice";
 
 const MobileLayout = () => {
+  const [usedSuggestions, setUsedSuggestions] = useState<number[]>([]);
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<number | null>(null);
@@ -51,7 +52,22 @@ const MobileLayout = () => {
       return item.id === current;
     });
     if (matched) {
-      setIsVisible(matched);
+      setActiveButton((prev) => {
+        if (!prev) return null;
+
+        return {
+          ...prev,
+          buttonOptions: prev?.buttonOptions?.map((item) => {
+            if (item.id !== matched.id) {
+              return item;
+            }
+            return {
+              ...item,
+              isPlayed: true,
+            };
+          }),
+        };
+      });
     }
     setCurrent(null);
   };
@@ -74,6 +90,30 @@ const MobileLayout = () => {
           }),
         };
       });
+      const optionIdx = activeButton?.buttonOptions.findIndex(
+        (item) => item.id === option.id
+      );
+      const updatedOptions = [...activeButton!.buttonOptions];
+      if (optionIdx !== undefined && optionIdx !== -1) {
+        const suggestions = [...activeButton!.buttonSuggestions];
+        const randomIdx = Math.floor(Math.random() * suggestions.length);
+        updatedOptions.splice(
+          optionIdx,
+          1,
+          activeButton!.buttonSuggestions[randomIdx]
+        );
+        if (activeButton?.buttonSuggestions.length) {
+          suggestions.splice(randomIdx, 1);
+          setActiveButton((prev) => {
+            if (!prev) return null;
+            return {
+              ...prev,
+              buttonSuggestions: suggestions,
+              buttonOptions: updatedOptions,
+            };
+          });
+        }
+      }
     }, 500);
   };
 
