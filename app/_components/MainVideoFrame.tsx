@@ -25,12 +25,12 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       if (currentOption) {
         setVideoURL(currentOption?.url);
         setTimeout(() => {
+          if (!playerRef.current) return;
           playerRef.current?.play();
         }, 10);
       }
     } else {
       setVideoURL(null);
-      playerRef.current?.pause();
     }
   }, [current, activeButton?.buttonOptions]);
 
@@ -53,19 +53,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       >
         <ReactHlsPlayer
           playerRef={playerRef}
-          autoPlay={
-            videoURL ===
-            "https://superreal.reddtech.ai/video/0_1.json/master.m3u8"
-              ? true
-              : false
-          }
-          muted={
-            videoURL ===
-            "https://superreal.reddtech.ai/video/0_1.json/master.m3u8"
-              ? true
-              : false
-          }
-          loop={videoURL ? false : true}
+          autoPlay={!videoURL}
+          muted={!videoURL}
+          loop={!videoURL}
           src={
             videoURL
               ? videoURL

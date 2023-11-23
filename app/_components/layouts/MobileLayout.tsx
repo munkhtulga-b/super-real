@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dataJSON from "@/app/_resources/data.json";
 import MainHeader from "../MainHeader";
 import MainVideoFrame from "../MainVideoFrame";
@@ -43,7 +43,6 @@ const MobileLayout = () => {
       setIsVisible(option);
     } else {
       setCurrent(option.id);
-      dispatch(updateCurrent({ id: option.id }));
     }
   };
 
