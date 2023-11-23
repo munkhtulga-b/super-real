@@ -11,12 +11,9 @@ import {
 } from "../../_redux/stores/options-slice";
 
 const MobileLayout = () => {
-  const [usedSuggestions, setUsedSuggestions] = useState<number[]>([]);
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<number | null>(null);
-
-  const dispatch = useDispatch();
 
   const handleButtonClick = (button: ButtonType) => {
     setActiveButton(button);
@@ -68,6 +65,7 @@ const MobileLayout = () => {
           }),
         };
       });
+      setIsVisible(matched);
     }
     setCurrent(null);
   };
@@ -120,7 +118,6 @@ const MobileLayout = () => {
   const handleReturn = () => {
     setActiveButton(null);
     setCurrent(null);
-    dispatch(updateCurrent({ id: null }));
   };
 
   return (

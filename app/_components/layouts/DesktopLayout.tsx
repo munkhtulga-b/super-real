@@ -58,6 +58,7 @@ const DesktopLayout = () => {
           }),
         };
       });
+      setIsVisible(matched);
     }
     setCurrent(null);
   };
