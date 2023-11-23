@@ -9,7 +9,7 @@
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
-                "isCurrent": false
+                "isVisible": true
             },
             {
                 "id": 2,
@@ -17,7 +17,7 @@
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
-                "isCurrent": false
+                "isVisible": true
             },
             {
                 "id": 3,
@@ -25,7 +25,7 @@
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
-                "isCurrent": false
+                "isVisible": true
             },
             {
                 "id": 4,
@@ -33,7 +33,7 @@
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
-                "isCurrent": false
+                "isVisible": true
             },
             {
                 "id": 5,
@@ -41,28 +41,28 @@
                 "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
-                "isCurrent": false
+                "isVisible": true
             }
         ],
         "buttonSuggestions": [
             {
                 "id": 1,
                 "text": "金額",
-                "url": "https://www.google.com",
+                "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false
             },
             {
                 "id": 2,
                 "text": "予約",
-                "url": "https://www.google.com",
+                "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false
             },
             {
                 "id": 3,
                 "text": "予約",
-                "url": "https://www.google.com",
+                "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false
             }

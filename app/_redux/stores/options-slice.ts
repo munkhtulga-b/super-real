@@ -15,7 +15,7 @@ export type OptionType = {
   url: string;
   isPlaying: boolean;
   isPlayed: boolean;
-  isCurrent?: boolean;
+  isVisible?: boolean;
 };
 
 export interface OptionsState {

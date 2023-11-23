@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-
 import ButtonPrimary from "./buttons/ButtonPrimary";
 import ButtonSecondary from "./buttons/ButtonSecondary";
 import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
@@ -28,7 +26,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
 }) => {
   const handleIconType = (option: OptionType) => {
     let result: "play" | "pause" | "completed" = "play";
-    if (!option.isPlayed) {
+    if (option.isVisible) {
       result = option.id === current ? "pause" : "play";
     } else {
       result = "completed";
