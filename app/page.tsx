@@ -12,7 +12,7 @@ export default function Home() {
     });
   }, []);
 
-  const appVersion = "1.0.3";
+  const appVersion = "v1.0.3";
 
   const [screenSize, setScreenSize] = useState(0);
 

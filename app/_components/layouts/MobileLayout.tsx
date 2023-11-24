@@ -17,17 +17,17 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const handleOptionClick = (option: OptionType) => {
     if (current && current === option.id) {
       setCurrent(null);
-      useSetActiveButton(option.id);
-      useSetisVisible(option);
+      updateActiveButton(option.id);
+      updateIsVisible(option);
     } else {
       if (current !== option.id) {
-        useSetActiveButton(current);
+        updateActiveButton(current);
       }
       const previous = activeButton?.buttonOptions.find((item) => {
         return item.id === current;
       });
       if (previous) {
-        useSetisVisible(previous);
+        updateIsVisible(previous);
       }
       setCurrent(option.id);
     }
@@ -38,13 +38,13 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
       return item.id === current;
     });
     if (matched) {
-      useSetActiveButton(matched.id);
-      useSetisVisible(matched);
+      updateActiveButton(matched.id);
+      updateIsVisible(matched);
     }
     setCurrent(null);
   };
 
-  const useSetActiveButton = (optionId: number | null) => {
+  const updateActiveButton = (optionId: number | null) => {
     setActiveButton((prev) => {
       if (!prev) return null;
       return {
@@ -61,7 +61,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
       };
     });
   };
-  const useSetisVisible = (option: OptionType) => {
+  const updateIsVisible = (option: OptionType) => {
     setTimeout(() => {
       setActiveButton((prev) => {
         if (!prev) return null;
