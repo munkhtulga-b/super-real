@@ -25,14 +25,14 @@
 
 
  video::-webkit-media-controls-overlay-play-button {
-   display: none;
+   display: none !important;
  }
 
 *::-webkit-media-controls-panel {
 
-  display: none!important;
+  display: none !important;
 
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
 
 }
 
@@ -40,7 +40,7 @@
 
   display: none!important;
 
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
 
 }
 
@@ -48,7 +48,7 @@
 
   display: none!important;
 
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
 
 }
 
