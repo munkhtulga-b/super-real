@@ -7,7 +7,7 @@ import MainOptions from "../MainMobileOptions";
 import { useDispatch } from "react-redux";
 import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 
-const DesktopLayout = () => {
+const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType>(buttons[0]);
   const [current, setCurrent] = useState<number | null>(null);
@@ -126,6 +126,9 @@ const DesktopLayout = () => {
           handleButtonClick={handleButtonClick}
           handleOptionClick={handleOptionClick}
         />
+      </section>
+      <section className="tw-col-span-2 tw-flex tw-justify-end tw-pr-[157.5px]">
+        {appVersion}
       </section>
     </div>
   );

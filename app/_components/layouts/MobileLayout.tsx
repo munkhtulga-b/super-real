@@ -10,7 +10,7 @@ import {
   updateCurrent,
 } from "../../_redux/stores/options-slice";
 
-const MobileLayout = () => {
+const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<number | null>(null);
@@ -136,6 +136,7 @@ const MobileLayout = () => {
         handleOptionClick={handleOptionClick}
         handleReturn={handleReturn}
       />
+      <section className="tw-flex tw-justify-center">{appVersion}</section>
     </div>
   );
 };

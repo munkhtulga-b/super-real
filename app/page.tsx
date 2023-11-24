@@ -12,12 +12,18 @@ export default function Home() {
     });
   }, []);
 
+  const appVersion = "1.0.0";
+
   const [screenSize, setScreenSize] = useState(0);
 
   return (
     <>
-      {screenSize !== 0 && screenSize > 768 && <DesktopLayout />}
-      {screenSize !== 0 && screenSize < 768 && <MobileLayout />}
+      {screenSize !== 0 && screenSize > 768 && (
+        <DesktopLayout appVersion={appVersion} />
+      )}
+      {screenSize !== 0 && screenSize < 768 && (
+        <MobileLayout appVersion={appVersion} />
+      )}
     </>
   );
 }
