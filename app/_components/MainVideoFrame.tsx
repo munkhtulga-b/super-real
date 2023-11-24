@@ -71,7 +71,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           webkit-playsinline="true"
           playsInline
           onEnded={onVideoEnd}
-          style={{ width: "auto", maxHeight: "calc(100vh - 50vh)" }}
+          style={{
+            width: "auto",
+            maxHeight: "calc(100vh - 50vh)",
+            pointerEvents: "none",
+          }}
         />
       </motion.div>
     </div>

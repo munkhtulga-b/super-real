@@ -86,6 +86,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       if (optionIdx !== undefined && optionIdx !== -1) {
         const suggestions = [...activeButton!.buttonSuggestions];
         const randomIdx = Math.floor(Math.random() * suggestions.length);
+        activeButton!.buttonSuggestions[randomIdx].text = option.text;
         updatedOptions.splice(
           optionIdx,
           1,
