@@ -3,8 +3,6 @@ import MainHeader from "../MainHeader";
 import MainDesktopOptions from "../MainDesktopOptions";
 import { useState, useEffect } from "react";
 import dataJSON from "@/app/_resources/data.json";
-import MainOptions from "../MainMobileOptions";
-import { useDispatch } from "react-redux";
 import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 
 const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
@@ -35,6 +33,28 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       });
       setIsVisible(option);
     } else {
+      if (current !== option.id) {
+        setActiveButton((prev) => {
+          return {
+            ...prev,
+            buttonOptions: prev?.buttonOptions?.map((item) => {
+              if (item.id !== current) {
+                return item;
+              }
+              return {
+                ...item,
+                isPlayed: true,
+              };
+            }),
+          };
+        });
+      }
+      const previous = activeButton.buttonOptions.find((item) => {
+        return item.id === current;
+      });
+      if (previous) {
+        setIsVisible(previous);
+      }
       setCurrent(option.id);
     }
   };
@@ -86,7 +106,9 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       if (optionIdx !== undefined && optionIdx !== -1) {
         const suggestions = [...activeButton!.buttonSuggestions];
         const randomIdx = Math.floor(Math.random() * suggestions.length);
-        activeButton!.buttonSuggestions[randomIdx].text = option.text;
+        if (activeButton?.buttonSuggestions.length) {
+          activeButton!.buttonSuggestions[randomIdx].text = option.text;
+        }
         updatedOptions.splice(
           optionIdx,
           1,
