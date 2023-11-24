@@ -21,7 +21,7 @@
             },
             {
                 "id": 3,
-                "text": "予約の方法は？",
+                "text": "ウェブ問診とはなんですか?",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -29,16 +29,8 @@
             },
             {
                 "id": 4,
-                "text": "ウェブ問診とはなんですか?",
+                "text": "一回の治療での所要時間は？",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 5,
-                "text": "その他",
-                "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
@@ -74,7 +66,7 @@
         "buttonOptions": [
             {
                 "id": 1,
-                "text": "金額はいくらですか？",
+                "text": "何に効果がありますか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -82,32 +74,8 @@
             },
             {
                 "id": 2,
-                "text": "予約の方法は？",
+                "text": "効果はどれくらい続きますか？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 3,
-                "text": "予約の方法は？",
-                "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 4,
-                "text": "ウェブ問診とはなんですか?",
-                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 5,
-                "text": "その他",
-                "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
@@ -143,7 +111,7 @@
         "buttonOptions": [
             {
                 "id": 1,
-                "text": "金額はいくらですか？",
+                "text": "何歳から受けられますか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -151,7 +119,7 @@
             },
             {
                 "id": 2,
-                "text": "予約の方法は？",
+                "text": "副作用はありますか？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -159,7 +127,7 @@
             },
             {
                 "id": 3,
-                "text": "予約の方法は？",
+                "text": "ガンでも受けられますか？",
                 "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -167,16 +135,8 @@
             },
             {
                 "id": 4,
-                "text": "ウェブ問診とはなんですか?",
+                "text": "薬を服用中ですが、受けられますか？",
                 "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 5,
-                "text": "その他",
-                "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
@@ -212,7 +172,7 @@
         "buttonOptions": [
             {
                 "id": 1,
-                "text": "金額はいくらですか？",
+                "text": "継続して投与する必要がありますか？",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
@@ -220,39 +180,15 @@
             },
             {
                 "id": 2,
-                "text": "予約の方法は？",
+                "text": "投与後気をつけることはありますか？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 3,
-                "text": "予約の方法は？",
-                "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 4,
-                "text": "ウェブ問診とはなんですか?",
-                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 5,
-                "text": "その他",
-                "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
             }
         ],
         "buttonSuggestions": [
-            {
+            {   
                 "id": 6,
                 "text": "金額",
                 "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
