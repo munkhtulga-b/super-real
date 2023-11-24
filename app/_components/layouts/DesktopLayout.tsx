@@ -1,7 +1,7 @@
 import MainVideoFrame from "../MainVideoFrame";
 import MainHeader from "../MainHeader";
 import MainDesktopOptions from "../MainDesktopOptions";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import dataJSON from "@/app/_resources/data.json";
 import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 
@@ -17,43 +17,17 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   const handleOptionClick = (option: OptionType) => {
     if (current && current === option.id) {
       setCurrent(null);
-      setActiveButton((prev) => {
-        return {
-          ...prev,
-          buttonOptions: prev?.buttonOptions?.map((item) => {
-            if (item.id !== option.id) {
-              return item;
-            }
-            return {
-              ...item,
-              isPlayed: true,
-            };
-          }),
-        };
-      });
-      setIsVisible(option);
+      useSetActiveButton(option.id);
+      useSetisVisible(option);
     } else {
       if (current !== option.id) {
-        setActiveButton((prev) => {
-          return {
-            ...prev,
-            buttonOptions: prev?.buttonOptions?.map((item) => {
-              if (item.id !== current) {
-                return item;
-              }
-              return {
-                ...item,
-                isPlayed: true,
-              };
-            }),
-          };
-        });
+        useSetActiveButton(current);
       }
       const previous = activeButton.buttonOptions.find((item) => {
         return item.id === current;
       });
       if (previous) {
-        setIsVisible(previous);
+        useSetisVisible(previous);
       }
       setCurrent(option.id);
     }
@@ -64,26 +38,29 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       return item.id === current;
     });
     if (matched) {
-      setActiveButton((prev) => {
-        return {
-          ...prev,
-          buttonOptions: prev?.buttonOptions?.map((item) => {
-            if (item.id !== matched.id) {
-              return item;
-            }
-            return {
-              ...item,
-              isPlayed: true,
-            };
-          }),
-        };
-      });
-      setIsVisible(matched);
+      useSetActiveButton(matched.id);
+      useSetisVisible(matched);
     }
     setCurrent(null);
   };
 
-  const setIsVisible = (option: OptionType) => {
+  const useSetActiveButton = (optionId: number | null) => {
+    setActiveButton((prev) => {
+      return {
+        ...prev,
+        buttonOptions: prev?.buttonOptions?.map((item) => {
+          if (item.id !== optionId) {
+            return item;
+          }
+          return {
+            ...item,
+            isPlayed: true,
+          };
+        }),
+      };
+    });
+  };
+  const useSetisVisible = (option: OptionType) => {
     setTimeout(() => {
       setActiveButton((prev) => {
         return {

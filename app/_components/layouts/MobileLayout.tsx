@@ -3,12 +3,7 @@ import dataJSON from "@/app/_resources/data.json";
 import MainHeader from "../MainHeader";
 import MainVideoFrame from "../MainVideoFrame";
 import MainOptions from "../MainMobileOptions";
-import { useDispatch } from "react-redux";
-import {
-  ButtonType,
-  OptionType,
-  updateCurrent,
-} from "../../_redux/stores/options-slice";
+import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 
 const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
@@ -22,24 +17,18 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const handleOptionClick = (option: OptionType) => {
     if (current && current === option.id) {
       setCurrent(null);
-      setActiveButton((prev) => {
-        if (!prev) return null;
-
-        return {
-          ...prev,
-          buttonOptions: prev?.buttonOptions?.map((item) => {
-            if (item.id !== option.id) {
-              return item;
-            }
-            return {
-              ...item,
-              isPlayed: true,
-            };
-          }),
-        };
-      });
-      setIsVisible(option);
+      useSetActiveButton(option.id);
+      useSetisVisible(option);
     } else {
+      if (current !== option.id) {
+        useSetActiveButton(current);
+      }
+      const previous = activeButton?.buttonOptions.find((item) => {
+        return item.id === current;
+      });
+      if (previous) {
+        useSetisVisible(previous);
+      }
       setCurrent(option.id);
     }
   };
@@ -49,32 +38,33 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
       return item.id === current;
     });
     if (matched) {
-      setActiveButton((prev) => {
-        if (!prev) return null;
-
-        return {
-          ...prev,
-          buttonOptions: prev?.buttonOptions?.map((item) => {
-            if (item.id !== matched.id) {
-              return item;
-            }
-            return {
-              ...item,
-              isPlayed: true,
-            };
-          }),
-        };
-      });
-      setIsVisible(matched);
+      useSetActiveButton(matched.id);
+      useSetisVisible(matched);
     }
     setCurrent(null);
   };
 
-  const setIsVisible = (option: OptionType) => {
+  const useSetActiveButton = (optionId: number | null) => {
+    setActiveButton((prev) => {
+      if (!prev) return null;
+      return {
+        ...prev,
+        buttonOptions: prev?.buttonOptions?.map((item) => {
+          if (item.id !== optionId) {
+            return item;
+          }
+          return {
+            ...item,
+            isPlayed: true,
+          };
+        }),
+      };
+    });
+  };
+  const useSetisVisible = (option: OptionType) => {
     setTimeout(() => {
       setActiveButton((prev) => {
         if (!prev) return null;
-
         return {
           ...prev,
           buttonOptions: prev?.buttonOptions?.map((item) => {
@@ -95,7 +85,9 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
       if (optionIdx !== undefined && optionIdx !== -1) {
         const suggestions = [...activeButton!.buttonSuggestions];
         const randomIdx = Math.floor(Math.random() * suggestions.length);
-        activeButton!.buttonSuggestions[randomIdx].text = option.text;
+        if (activeButton?.buttonSuggestions.length) {
+          activeButton!.buttonSuggestions[randomIdx].text = option.text;
+        }
         updatedOptions.splice(
           optionIdx,
           1,
