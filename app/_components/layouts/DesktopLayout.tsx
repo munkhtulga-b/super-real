@@ -128,7 +128,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
           handleOptionClick={handleOptionClick}
         />
       </section>
-      <section className="tw-col-span-2 tw-flex tw-justify-end tw-pr-[157.5px]">
+      <section className="tw-col-span-2 tw-flex tw-justify-end tw-pr-[157.5px] tw-text-[10px]">
         {appVersion}
       </section>
     </div>

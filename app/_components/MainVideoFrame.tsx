@@ -44,7 +44,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     <div className="tw-mt-[50px] tw-w-full tw-relative">
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
-        className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 md:tw-text-base tw-whitespace-nowrap"
+        className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 md:tw-text-base tw-whitespace-nowrap tw-tracking-[-2px]"
       >
         き ま た の A I モ デ ル で す
       </span>
