@@ -1,13 +1,28 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
 import { ButtonType, onVideoEnd } from "../_redux/stores/options-slice";
+import RingLoader from "react-spinners/RingLoader";
+import BounceLoader from "react-spinners/BounceLoader";
+import PuffLoader from "react-spinners/PuffLoader";
+import Image from "next/image";
 
 interface VideoFrameProps {
   activeButton: ButtonType | null;
   current: number | null;
   onVideoEnd: () => void;
 }
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+  position: "absolute",
+  left: "50%",
+  top: "50%",
+  zIndex: "10",
+  transform: "translate(-50%, -50%)",
+};
 
 const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   activeButton,
@@ -21,6 +36,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     setTimeout(() => {
       playerRef.current?.play();
     }, 200);
+    fetch("https://superreal.reddtech.ai/video/idle.json/master.m3u8").then(
+      (res) => console.log(res.body)
+    );
   }, []);
 
   useEffect(() => {
@@ -58,13 +76,36 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           style={{ minHeight: "calc(100vh - 50vh)" }}
           key={videoURL}
         >
-          <motion.div
+          {/* <motion.div
             transition={{ duration: 0.4 }}
             key={videoURL}
             initial={{ scale: 0, backgroundColor: "rgba(0, 0, 0, 0.5)" }}
             animate={{ scale: 1, backgroundColor: "rgba(255, 255, 255, 0)" }}
             exit={{ scale: 0, backgroundColor: "rgba(0, 0, 0, 0.5)" }}
             className="tw-absolute tw-top-0 tw-left-0 tw-bottom-0 tw-right-0 tw-rounded-full"
+          /> */}
+          <PuffLoader
+            size={60}
+            color="#2B5BD3"
+            loading={!videoURL}
+            cssOverride={override}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+          <Image
+            src={"/assets/blobanimation.svg"}
+            width={0}
+            height={0}
+            alt="blob"
+            style={{
+              width: "200px",
+              height: "200px",
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              zIndex: "0",
+              transform: "translate(-50%, -50%)",
+            }}
           />
           <ReactHlsPlayer
             playerRef={playerRef}
@@ -84,6 +125,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
               width: "auto",
               maxHeight: "calc(100vh - 50vh)",
               pointerEvents: "none",
+              zIndex: "20",
             }}
           />
         </motion.div>

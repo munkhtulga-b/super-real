@@ -34,6 +34,14 @@
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
+                "isPlaying": false,
+                "isPlayed": false,
+                "isVisible": true
             }
         ],
         "buttonSuggestions": [
@@ -76,6 +84,14 @@
                 "id": 2,
                 "text": "効果はどれくらい続きますか？",
                 "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
+                "isPlaying": false,
+                "isPlayed": false,
+                "isVisible": true
+            },
+            {
+                "id": 3,
+                "text": "その他",
+                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
@@ -140,6 +156,14 @@
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
+            },
+            {
+                "id": 5,
+                "text": "その他",
+                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
+                "isPlaying": false,
+                "isPlayed": false,
+                "isVisible": true
             }
         ],
         "buttonSuggestions": [
@@ -185,48 +209,11 @@
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
-            }
-        ],
-        "buttonSuggestions": [
-            {   
-                "id": 6,
-                "text": "金額",
-                "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false
             },
             {
-                "id": 7,
+                "id": 3,
                 "text": "その他",
-                "url": "https://superreal.reddtech.ai/video/3_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false
-            },
-            {
-                "id": 8,
-                "text": "予約",
-                "url": "https://superreal.reddtech.ai/video/5_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false
-            }
-        ]
-    },
-    {
-        "buttonId": 5,
-        "buttonText": "その他",
-        "buttonOptions": [
-            {
-                "id": 1,
-                "text": "継続して投与する必要がありますか？",
-                "url": "https://superreal.reddtech.ai/video/1_1.json/master.m3u8",
-                "isPlaying": false,
-                "isPlayed": false,
-                "isVisible": true
-            },
-            {
-                "id": 2,
-                "text": "投与後気をつけることはありますか？",
-                "url": "https://superreal.reddtech.ai/video/2_1.json/master.m3u8",
+                "url": "https://superreal.reddtech.ai/video/4_1.json/master.m3u8",
                 "isPlaying": false,
                 "isPlayed": false,
                 "isVisible": true
