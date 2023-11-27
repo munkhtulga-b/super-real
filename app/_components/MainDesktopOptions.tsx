@@ -51,7 +51,7 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
             })}
           </ul>
         </section>
-        <section className="tw-px-[42.5px] tw-mt-5">
+        <section className="tw-px-[22px] tw-mt-5">
           <ul className="tw-m-0 tw-grid tw-grid-cols-1 tw-auto-rows-min tw-gap-y-3">
             {activeButton?.buttonOptions.map((option) => {
               return (
