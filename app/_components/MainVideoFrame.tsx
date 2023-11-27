@@ -36,9 +36,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     setTimeout(() => {
       playerRef.current?.play();
     }, 200);
-    fetch("https://superreal.reddtech.ai/video/idle.json/master.m3u8").then(
-      (res) => console.log(res.body)
-    );
   }, []);
 
   useEffect(() => {
@@ -68,9 +65,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       </span>
       <AnimatePresence mode="wait">
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="video-container tw-flex tw-justify-center tw-relative"
           style={{ minHeight: "calc(100vh - 50vh)" }}
@@ -87,7 +84,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           <PuffLoader
             size={60}
             color="#2B5BD3"
-            loading={!videoURL}
+            loading={true}
             cssOverride={override}
             aria-label="Loading Spinner"
             data-testid="loader"
