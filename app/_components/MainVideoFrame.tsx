@@ -2,8 +2,6 @@ import { useRef, useEffect, useState, CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
 import { ButtonType, onVideoEnd } from "../_redux/stores/options-slice";
-import RingLoader from "react-spinners/RingLoader";
-import BounceLoader from "react-spinners/BounceLoader";
 import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
 
@@ -83,7 +81,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           /> */}
           <PuffLoader
             size={60}
-            color="#2B5BD3"
+            color="#FFFFFF"
             loading={true}
             cssOverride={override}
             aria-label="Loading Spinner"
