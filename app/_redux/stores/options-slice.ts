@@ -20,10 +20,12 @@ export type OptionType = {
 
 export interface OptionsState {
   current: number | null;
+  screenSize: number;
 }
 
 const initialState: OptionsState = {
   current: null,
+  screenSize: 0,
 };
 
 export const optionsSlice = createSlice({
@@ -36,9 +38,13 @@ export const optionsSlice = createSlice({
     onVideoEnd(state) {
       state.current = null;
     },
+    updateScreenSize(state, action: PayloadAction<number>) {
+      state.screenSize = action.payload;
+    },
   },
 });
 
-export const { updateCurrent, onVideoEnd } = optionsSlice.actions;
+export const { updateCurrent, onVideoEnd, updateScreenSize } =
+  optionsSlice.actions;
 
 export default optionsSlice.reducer;

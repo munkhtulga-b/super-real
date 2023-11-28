@@ -4,6 +4,7 @@ import ReactHlsPlayer from "react-hls-player";
 import { ButtonType, onVideoEnd } from "../_redux/stores/options-slice";
 import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
+import { useAppSelector } from "../_redux/config";
 
 interface VideoFrameProps {
   activeButton: ButtonType | null;
@@ -27,6 +28,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   current,
   onVideoEnd,
 }) => {
+  const screenSize = useAppSelector((state) => state.store.screenSize);
   const playerRef = useRef<HTMLVideoElement | null>(null);
   const [videoURL, setVideoURL] = useState<string | null>(null);
 
@@ -57,7 +59,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     <div className="tw-mt-[50px] tw-w-full tw-relative">
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
-        className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-10 md:tw-text-base tw-whitespace-nowrap tw-tracking-[-2px]"
+        className="tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 md:tw-text-base tw-whitespace-nowrap tw-tracking-[-2px]"
       >
         き ま た の A I モ デ ル で す
       </span>
@@ -68,7 +70,10 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="video-container tw-flex tw-justify-center tw-relative"
-          style={{ minHeight: "calc(100vh - 50vh)" }}
+          style={{
+            minHeight:
+              screenSize > 1024 ? "calc(100vh - 10vh)" : "calc(100vh - 50vh)",
+          }}
           key={videoURL}
         >
           {/* <motion.div
@@ -118,7 +123,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             onEnded={onVideoEnd}
             style={{
               width: "auto",
-              maxHeight: "calc(100vh - 50vh)",
+              maxHeight:
+                screenSize > 1024 ? "calc(100vh - 10vh)" : "calc(100vh - 50vh)",
               pointerEvents: "none",
               zIndex: "20",
             }}

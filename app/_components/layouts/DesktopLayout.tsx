@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MainVideoFrame from "../MainVideoFrame";
 import MainHeader from "../MainHeader";
 import MainDesktopOptions from "../MainDesktopOptions";
@@ -107,10 +108,10 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
 
   return (
     <div
-      style={{ height: "100vh" }}
+      style={{ maxHeight: "100vh", minHeight: "100vh", overflow: "hidden" }}
       className="tw-grid tw-grid-cols-2 tw-place-items-stretch"
     >
-      <section className="tw-flex tw-flex-col md:tw-px-[25px] xl:tw-px-[50px]">
+      <section className="tw-flex tw-flex-col tw-justify-between md:tw-px-[25px] xl:tw-px-[50px]">
         <MainHeader />
         <MainVideoFrame
           activeButton={activeButton}
@@ -118,7 +119,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
           onVideoEnd={handleVideoEnd}
         />
       </section>
-      <section className="tw-grid tw-auto-rows-min tw-place-content-center md:tw-px-[50px] xl:tw-px-[157.5px]">
+      <section className="tw-grid tw-auto-rows-min tw-place-content-center md:tw-px-[50px] xl:tw-px-[157.5px] tw-relative">
         <MainDesktopOptions
           buttons={buttons}
           activeButton={activeButton}
@@ -126,9 +127,24 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
           handleButtonClick={handleButtonClick}
           handleOptionClick={handleOptionClick}
         />
-      </section>
-      <section className="tw-col-span-2 tw-flex tw-justify-end tw-pr-[157.5px] tw-text-[10px]">
-        {appVersion}
+        <Image
+          priority
+          src="/assets/group-bubbles.svg"
+          alt="bubbles"
+          width={0}
+          height={0}
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            bottom: "0",
+            right: "0",
+            zIndex: "0",
+
+            width: "100%",
+            height: "100%",
+          }}
+        />
       </section>
     </div>
   );
