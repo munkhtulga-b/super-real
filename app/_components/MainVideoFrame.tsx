@@ -72,7 +72,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           className="video-container tw-flex tw-justify-center tw-relative"
           style={{
             minHeight:
-              screenSize > 1024 ? "calc(100vh - 10vh)" : "calc(100vh - 50vh)",
+              screenSize > 1024 ? "calc(100vh - 20vh)" : "calc(100vh - 50vh)",
           }}
           key={videoURL}
         >
@@ -124,7 +124,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             style={{
               width: "auto",
               maxHeight:
-                screenSize > 1024 ? "calc(100vh - 10vh)" : "calc(100vh - 50vh)",
+                screenSize > 1024 ? "calc(100vh - 20vh)" : "calc(100vh - 50vh)",
               pointerEvents: "none",
               zIndex: "20",
             }}
