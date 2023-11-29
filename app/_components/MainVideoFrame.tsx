@@ -127,6 +127,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
                 screenSize > 1024 ? "calc(100vh - 20vh)" : "calc(100vh - 50vh)",
               pointerEvents: "none",
               zIndex: "20",
+              // aspectRatio: "0.75/1",
             }}
           />
         </motion.div>

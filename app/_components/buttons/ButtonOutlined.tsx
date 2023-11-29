@@ -19,7 +19,7 @@ const ButtonOutlined: React.FunctionComponent<ButtonProps> = ({
           : "tw-bg-white tw-border-secondary tw-text-primary"
       } tw-rounded-[50px] tw-border-[1px]  tw-px-4 tw-py-2 tw-transition-all tw-duration-300`}
     >
-      <span className="tw-text-base">{text}</span>
+      <span className="tw-text-base tw-whitespace-nowrap">{text}</span>
     </button>
   );
 };

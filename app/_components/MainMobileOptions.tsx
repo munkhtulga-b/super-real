@@ -71,7 +71,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
               key={"placeholder"}
               className="tw-text-base tw-text-grayDark tw-px-4 tw-h-[27px]"
             >
-              質問があります？
+              何を聞きたいですか？
             </p>
           )}
           {/* Rest of your components */}
@@ -92,6 +92,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
                     iconType={handleIconType(option)}
                     key={option.id}
                     text={option.text}
+                    activeButton={activeButton}
                     option={option}
                     onClickEvent={() => handleOptionClick(option)}
                   />

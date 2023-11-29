@@ -87,6 +87,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
         const randomIdx = Math.floor(Math.random() * suggestions.length);
         if (activeButton?.buttonSuggestions.length) {
           activeButton!.buttonSuggestions[randomIdx].text = option.text;
+          activeButton!.buttonSuggestions[randomIdx].isPlayed = true;
         }
         updatedOptions.splice(
           optionIdx,

@@ -86,6 +86,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
         const randomIdx = Math.floor(Math.random() * suggestions.length);
         if (activeButton?.buttonSuggestions.length) {
           activeButton!.buttonSuggestions[randomIdx].text = option.text;
+          activeButton!.buttonSuggestions[randomIdx].isPlayed = true;
         }
         updatedOptions.splice(
           optionIdx,
@@ -145,6 +146,9 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
             height: "100%",
           }}
         />
+        <span className="tw-absolute tw-bottom-10 tw-right-10 tw-text-[10px]">
+          {appVersion}
+        </span>
       </section>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { OptionType } from "@/app/_redux/stores/options-slice";
+import { ButtonType, OptionType } from "@/app/_redux/stores/options-slice";
 
 type ButtonProps = {
   text: string;
@@ -10,6 +10,7 @@ type ButtonProps = {
    */
   iconType: "play" | "pause" | "completed";
   option?: OptionType;
+  activeButton: ButtonType;
   onClickEvent?: (option: OptionType) => void;
 };
 
@@ -17,6 +18,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
   text,
   iconType,
   option,
+  activeButton,
   onClickEvent,
 }) => {
   const bgColor =
@@ -40,7 +42,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
 
   return (
     <button
-      disabled={iconType === "completed"}
+      disabled={option?.isPlayed && !activeButton.buttonSuggestions.length}
       onClick={handleClick}
       className={`${bgColor} ${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
     >
