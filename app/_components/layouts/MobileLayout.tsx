@@ -10,6 +10,18 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<number | null>(null);
 
+  useEffect(() => {
+    const shuffled: ButtonType[] = [];
+    dataJSON.forEach((button) => {
+      button.buttonOptions.map((option) => {
+        const randomIdx = Math.floor(Math.random() * option.suggestions.length);
+        option.url = option.suggestions[randomIdx].url;
+      });
+      shuffled.push(button);
+    });
+    setButtons(shuffled);
+  }, []);
+
   const handleButtonClick = (button: ButtonType) => {
     setActiveButton(button);
   };

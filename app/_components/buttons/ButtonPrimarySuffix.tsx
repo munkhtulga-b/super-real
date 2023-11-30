@@ -51,7 +51,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
           iconType === "completed" ? "tw-text-grayDark" : "tw-text-primary"
         }
       >
-        {text} {option?.suggestions.length}
+        {text}
       </span>
       <Image
         src={`/assets/${iconType}-vector.svg`}

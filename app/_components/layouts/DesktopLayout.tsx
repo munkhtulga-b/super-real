@@ -11,12 +11,24 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   const [activeButton, setActiveButton] = useState<ButtonType>(buttons[0]);
   const [current, setCurrent] = useState<number | null>(null);
 
+  useEffect(() => {
+    const shuffled: ButtonType[] = [];
+    dataJSON.forEach((button) => {
+      button.buttonOptions.map((option) => {
+        const randomIdx = Math.floor(Math.random() * option.suggestions.length);
+        option.url = option.suggestions[randomIdx].url;
+      });
+      shuffled.push(button);
+    });
+    console.log(shuffled);
+    setButtons(shuffled);
+  }, []);
+
   const handleButtonClick = (button: ButtonType) => {
     setActiveButton(button);
   };
 
   const handleOptionClick = (option: OptionType) => {
-    console.log("worked");
     if (current && current === option.id) {
       setCurrent(null);
       updateActiveButton(option.id);
