@@ -42,7 +42,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
 
   return (
     <button
-      disabled={option?.isPlayed && !activeButton.buttonSuggestions.length}
+      disabled={option?.isPlayed && !option.suggestions.length}
       onClick={handleClick}
       className={`${bgColor} ${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
     >
@@ -51,7 +51,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
           iconType === "completed" ? "tw-text-grayDark" : "tw-text-primary"
         }
       >
-        {text}
+        {text} {option?.suggestions.length}
       </span>
       <Image
         src={`/assets/${iconType}-vector.svg`}

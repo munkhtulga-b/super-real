@@ -2,7 +2,7 @@ import Image from "next/image";
 import MainVideoFrame from "../MainVideoFrame";
 import MainHeader from "../MainHeader";
 import MainDesktopOptions from "../MainDesktopOptions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dataJSON from "@/app/_resources/data.json";
 import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 
@@ -16,6 +16,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   };
 
   const handleOptionClick = (option: OptionType) => {
+    console.log("worked");
     if (current && current === option.id) {
       setCurrent(null);
       updateActiveButton(option.id);
@@ -82,23 +83,16 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       );
       const updatedOptions = [...activeButton!.buttonOptions];
       if (optionIdx !== undefined && optionIdx !== -1) {
-        const suggestions = [...activeButton!.buttonSuggestions];
+        const suggestions =
+          activeButton.buttonOptions[optionIdx].suggestions.slice();
         const randomIdx = Math.floor(Math.random() * suggestions.length);
-        if (activeButton?.buttonSuggestions.length) {
-          activeButton!.buttonSuggestions[randomIdx].text = option.text;
-          activeButton!.buttonSuggestions[randomIdx].isPlayed = true;
-        }
-        updatedOptions.splice(
-          optionIdx,
-          1,
-          activeButton!.buttonSuggestions[randomIdx]
-        );
-        if (activeButton?.buttonSuggestions.length) {
-          suggestions.splice(randomIdx, 1);
+        if (suggestions.length) {
+          updatedOptions[optionIdx].url = suggestions[randomIdx].url;
+          updatedOptions[optionIdx].isPlayed = true;
+          updatedOptions[optionIdx].suggestions.splice(randomIdx, 1);
           setActiveButton((prev) => {
             return {
               ...prev,
-              buttonSuggestions: suggestions,
               buttonOptions: updatedOptions,
             };
           });

@@ -6,7 +6,6 @@ export type ButtonType = {
   buttonId: number;
   buttonText: string;
   buttonOptions: OptionType[];
-  buttonSuggestions: OptionType[];
 };
 
 export type OptionType = {
@@ -16,6 +15,15 @@ export type OptionType = {
   isPlaying: boolean;
   isPlayed: boolean;
   isVisible?: boolean;
+  suggestions: SuggestionType[];
+};
+
+export type SuggestionType = {
+  id: number;
+  text: string;
+  url: string;
+  isPlaying: boolean;
+  isPlayed: boolean;
 };
 
 export interface OptionsState {
