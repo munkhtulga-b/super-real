@@ -28,6 +28,8 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
     let result: "play" | "pause" | "completed" = "play";
     if (!option.isPlayed) {
       result = option.id === current ? "pause" : "play";
+    } else if (option.isPlayed && option.suggestions.length) {
+      result = option.id === current ? "pause" : "play";
     } else {
       result = "completed";
     }

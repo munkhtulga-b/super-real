@@ -24,6 +24,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
 
   const handleButtonClick = (button: ButtonType) => {
     setActiveButton(button);
+    setCurrent(null);
   };
 
   const handleOptionClick = (option: OptionType) => {

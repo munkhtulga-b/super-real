@@ -21,18 +21,16 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
   activeButton,
   onClickEvent,
 }) => {
-  const bgColor =
-    iconType === "play" || iconType === "pause"
-      ? "tw-bg-blueLight"
-      : "tw-bg-grayMedium";
+  const bgColor = !option?.isPlayed ? "tw-bg-blueLight" : "tw-bg-grayMedium";
 
   const borderColor =
     iconType === "play" || iconType === "pause" ? "border-blueMedium" : "";
 
-  const hoverEffect =
-    iconType !== "completed"
-      ? "hover:tw-bg-blueSoft hover:tw-border-secondary"
-      : "";
+  const hoverEffect = !option?.isPlayed
+    ? "hover:tw-bg-blueSoft hover:tw-border-secondary"
+    : option.isPlayed && option.suggestions.length
+    ? "hover:tw-bg-grayLight"
+    : "";
 
   const handleClick = () => {
     if (onClickEvent && option) {

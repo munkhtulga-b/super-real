@@ -20,19 +20,19 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       });
       shuffled.push(button);
     });
-    console.log(shuffled);
     setButtons(shuffled);
   }, []);
 
   const handleButtonClick = (button: ButtonType) => {
     setActiveButton(button);
+    setCurrent(null);
   };
 
   const handleOptionClick = (option: OptionType) => {
     if (current && current === option.id) {
       setCurrent(null);
-      updateActiveButton(option.id);
       updateIsVisible(option);
+      updateActiveButton(option.id);
     } else {
       if (current !== option.id) {
         updateActiveButton(current);
@@ -69,6 +69,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
           return {
             ...item,
             isPlayed: true,
+            isPlaying: !item.isPlaying,
           };
         }),
       };

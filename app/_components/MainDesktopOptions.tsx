@@ -24,6 +24,8 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
     let result: "play" | "pause" | "completed" = "play";
     if (!option.isPlayed) {
       result = option.id === current ? "pause" : "play";
+    } else if (option.isPlayed && option.suggestions.length) {
+      result = option.id === current ? "pause" : "play";
     } else {
       result = "completed";
     }
@@ -38,7 +40,7 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
       >
         何を聞きたいですか？
       </p>
-      <div className="tw-rounded-[24px] tw-shadow tw-py-[25px] tw-min-h-[435px] tw-bg-white tw-mt-5">
+      <div className="tw-rounded-[24px] tw-shadow tw-py-[25px] tw-min-h-[450px] tw-bg-white tw-mt-5">
         <section className="tw-px-[22px]">
           <ul className="tw-m-0 tw-flex tw-justify-start tw-items-center tw-w-full tw-gap-2">
             {buttons.map((button) => {
