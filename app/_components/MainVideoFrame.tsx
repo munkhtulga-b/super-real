@@ -115,7 +115,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             src={
               videoURL
                 ? videoURL
-                : "https://superreal.reddtech.ai/video/testi.json/master.m3u8"
+                : "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
             }
             controls={false}
             webkit-playsinline="true"
