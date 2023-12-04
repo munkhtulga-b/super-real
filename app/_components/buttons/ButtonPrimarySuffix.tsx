@@ -12,6 +12,7 @@ type ButtonProps = {
   option?: OptionType;
   activeButton: ButtonType;
   onClickEvent?: (option: OptionType) => void;
+  current: OptionType | null;
 };
 
 const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
@@ -20,8 +21,17 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
   option,
   activeButton,
   onClickEvent,
+  current,
 }) => {
-  const bgColor = !option?.isPlayed ? "tw-bg-blueLight" : "tw-bg-grayMedium";
+  const bgColor = () => {
+    let result = "#D3E7FF";
+    if (current && current?.id === option?.id && option?.isPlaying) {
+      result = "#B4D6FF";
+    } else {
+      result = !option?.isPlayed ? "#D3E7FF" : "#E5E5E5";
+    }
+    return result;
+  };
 
   const borderColor =
     iconType === "play" || iconType === "pause" ? "border-blueMedium" : "";
@@ -40,9 +50,9 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
 
   return (
     <button
-      disabled={option?.isPlayed && !option.suggestions.length}
       onClick={handleClick}
-      className={`${bgColor} ${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
+      style={{ backgroundColor: bgColor() }}
+      className={`${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
     >
       <span
         className={

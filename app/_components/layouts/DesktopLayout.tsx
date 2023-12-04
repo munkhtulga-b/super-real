@@ -9,7 +9,7 @@ import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
 const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType>(buttons[0]);
-  const [current, setCurrent] = useState<number | null>(null);
+  const [current, setCurrent] = useState<OptionType | null>(null);
 
   useEffect(() => {
     const shuffled: ButtonType[] = [];
@@ -29,89 +29,57 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
   };
 
   const handleOptionClick = (option: OptionType) => {
-    if (current && current === option.id) {
-      setCurrent(null);
-      updateIsVisible(option);
-      updateActiveButton(option.id);
-    } else {
-      if (current !== option.id) {
-        updateActiveButton(current);
-      }
-      const previous = activeButton.buttonOptions.find((item) => {
-        return item.id === current;
-      });
-      if (previous) {
-        updateIsVisible(previous);
-      }
-      setCurrent(option.id);
+    if (current && current.id !== option.id) {
+      updateActiveButton(current);
     }
+    updateActiveButton(option);
   };
 
   const handleVideoEnd = () => {
     const matched = activeButton?.buttonOptions?.find((item) => {
-      return item.id === current;
+      return item.id === current?.id;
     });
     if (matched) {
-      updateActiveButton(matched.id);
-      updateIsVisible(matched);
+      updateActiveButton(matched, true);
     }
     setCurrent(null);
   };
 
-  const updateActiveButton = (optionId: number | null) => {
+  const checkIsPlayed = (shallow: OptionType) => {
+    let result = false;
+    if (shallow.isPlayed) {
+      result = true;
+    } else {
+      if (!shallow.isPlaying) {
+        result = true;
+      }
+    }
+    return result;
+  };
+
+  const updateActiveButton = (option: OptionType, isVideoPlayed?: boolean) => {
+    const shallow = { ...option };
+    shallow.isPlaying = !shallow.isPlaying;
+    shallow.isPlayed = checkIsPlayed(shallow);
+    if (shallow.isPlayed && shallow.isPlaying && shallow.suggestions.length) {
+      const randomIdx = Math.floor(Math.random() * shallow.suggestions.length);
+      shallow.url = shallow.suggestions[randomIdx].url;
+      shallow.suggestions.splice(randomIdx, 1);
+    } else if (!shallow.suggestions.length) {
+      console.log("No suggestions");
+    }
     setActiveButton((prev) => {
       return {
         ...prev,
         buttonOptions: prev?.buttonOptions?.map((item) => {
-          if (item.id !== optionId) {
+          if (item.id !== shallow.id) {
             return item;
           }
-          return {
-            ...item,
-            isPlayed: true,
-            isPlaying: !item.isPlaying,
-          };
+          return shallow;
         }),
       };
     });
-  };
-  const updateIsVisible = (option: OptionType) => {
-    setTimeout(() => {
-      setActiveButton((prev) => {
-        return {
-          ...prev,
-          buttonOptions: prev?.buttonOptions?.map((item) => {
-            if (item.id !== option.id) {
-              return item;
-            }
-            return {
-              ...item,
-              isVisible: false,
-            };
-          }),
-        };
-      });
-      const optionIdx = activeButton?.buttonOptions.findIndex(
-        (item) => item.id === option.id
-      );
-      const updatedOptions = [...activeButton!.buttonOptions];
-      if (optionIdx !== undefined && optionIdx !== -1) {
-        const suggestions =
-          activeButton.buttonOptions[optionIdx].suggestions.slice();
-        const randomIdx = Math.floor(Math.random() * suggestions.length);
-        if (suggestions.length) {
-          updatedOptions[optionIdx].url = suggestions[randomIdx].url;
-          updatedOptions[optionIdx].isPlayed = true;
-          updatedOptions[optionIdx].suggestions.splice(randomIdx, 1);
-          setActiveButton((prev) => {
-            return {
-              ...prev,
-              buttonOptions: updatedOptions,
-            };
-          });
-        }
-      }
-    }, 500);
+    setCurrent(shallow);
   };
 
   return (

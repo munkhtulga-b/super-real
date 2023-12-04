@@ -10,7 +10,7 @@ import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 interface MobileOptionsProps {
   buttons: ButtonType[];
   activeButton: ButtonType | null;
-  current: number | null;
+  current: OptionType | null;
   handleButtonClick: (button: ButtonType) => void;
   handleOptionClick: (option: OptionType) => void;
   handleReturn: () => void;
@@ -27,9 +27,8 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
   const handleIconType = (option: OptionType) => {
     let result: "play" | "pause" | "completed" = "play";
     if (!option.isPlayed) {
-      result = option.id === current ? "pause" : "play";
-    } else if (option.isPlayed && option.suggestions.length) {
-      result = option.id === current ? "pause" : "play";
+      result =
+        current?.id === option.id && current?.isPlaying ? "pause" : "play";
     } else {
       result = "completed";
     }
@@ -49,7 +48,9 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
           height={0}
           style={{ width: "auto", height: "auto" }}
         />
-        <span className="tw-text-base tw-text-grayDark">予約と金額</span>
+        <span className="tw-text-base tw-text-grayDark">
+          {activeButton?.buttonText}
+        </span>
       </button>
     );
   };
@@ -97,6 +98,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
                     activeButton={activeButton}
                     option={option}
                     onClickEvent={() => handleOptionClick(option)}
+                    current={current}
                   />
                 );
               })}
