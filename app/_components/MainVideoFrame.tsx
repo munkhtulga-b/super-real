@@ -156,6 +156,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
                 zIndex: "20",
                 // aspectRatio: "0.75/1",
               }}
+              className={`${
+                !videoURL ? "tw-opacity-100" : "tw-opacity-0"
+              } tw-transition-all tw-duration-1000`}
             />
           )}
           {videoURL && (
