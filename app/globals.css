@@ -66,4 +66,8 @@ video::slotted::-webkit-media-controls-container{
      -webkit-appearance: none !important;
     }
 
+video::-webkit-media-controls {
+  display: none !important;
+}
+
 

@@ -21,12 +21,18 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
   handleOptionClick,
 }) => {
   const handleIconType = (option: OptionType) => {
-    let result: "play" | "pause" | "completed" = "play";
+    let result: "gray-play" | "gray-pause" | "play" | "pause" | "completed" =
+      "play";
     if (!option.isPlayed) {
       result =
         current?.id === option.id && current?.isPlaying ? "pause" : "play";
     } else {
-      result = "completed";
+      result =
+        current?.id === option.id && current.isPlaying
+          ? "gray-pause"
+          : current?.id === option.id && !current?.isPlaying
+          ? "gray-play"
+          : "completed";
     }
     return result;
   };

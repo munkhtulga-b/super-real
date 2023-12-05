@@ -4,7 +4,7 @@
     "buttonText": "予約と金額",
     "buttonOptions": [
       {
-        "id": 1,
+        "id": 10,
         "text": "金額はいくらですか？",
         "url": "https://superreal.reddtech.ai/video/10a.json/master.m3u8",
         "isPlaying": false,
@@ -12,21 +12,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 1,
+            "id": 10,
             "text": "金額はいくらですか？",
             "url": "https://superreal.reddtech.ai/video/10a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 10,
             "text": "金額はいくらですか？",
             "url": "https://superreal.reddtech.ai/video/10b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 10,
             "text": "金額はいくらですか？",
             "url": "https://superreal.reddtech.ai/video/10c.json/master.m3u8",
             "isPlaying": false,
@@ -35,7 +35,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 12,
         "text": "予約の方法は？",
         "url": "https://superreal.reddtech.ai/video/12a.json/master.m3u8",
         "isPlaying": false,
@@ -43,21 +43,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 2,
+            "id": 12,
             "text": "予約の方法は？",
             "url": "https://superreal.reddtech.ai/video/12a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 12,
             "text": "予約の方法は？",
             "url": "https://superreal.reddtech.ai/video/12b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 12,
             "text": "予約の方法は？",
             "url": "https://superreal.reddtech.ai/video/12c.json/master.m3u8",
             "isPlaying": false,
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 24,
         "text": "ウェブ問診とはなんですか?",
         "url": "https://superreal.reddtech.ai/video/24a.json/master.m3u8",
         "isPlaying": false,
@@ -74,21 +74,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 3,
+            "id": 24,
             "text": "ウェブ問診とはなんですか?",
             "url": "https://superreal.reddtech.ai/video/24a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 24,
             "text": "ウェブ問診とはなんですか?",
             "url": "https://superreal.reddtech.ai/video/24b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 24,
             "text": "ウェブ問診とはなんですか?",
             "url": "https://superreal.reddtech.ai/video/24c.json/master.m3u8",
             "isPlaying": false,
@@ -97,7 +97,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 18,
         "text": "一回の治療での所要時間は？",
         "url": "https://superreal.reddtech.ai/video/18a.json/master.m3u8",
         "isPlaying": false,
@@ -105,21 +105,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 4,
+            "id": 18,
             "text": "一回の治療での所要時間は？",
             "url": "https://superreal.reddtech.ai/video/18a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 4,
+            "id": 18,
             "text": "一回の治療での所要時間は？",
             "url": "https://superreal.reddtech.ai/video/18b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 4,
+            "id": 18,
             "text": "一回の治療での所要時間は？",
             "url": "https://superreal.reddtech.ai/video/18c.json/master.m3u8",
             "isPlaying": false,
@@ -128,7 +128,7 @@
         ]
       },
       {
-        "id": 5,
+        "id": 31,
         "text": "その他",
         "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
         "isPlaying": false,
@@ -136,21 +136,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 1,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31c.json/master.m3u8",
             "isPlaying": false,
@@ -165,7 +165,7 @@
     "buttonText": "効果",
     "buttonOptions": [
       {
-        "id": 1,
+        "id": 17,
         "text": "何に効果がありますか？",
         "url": "https://superreal.reddtech.ai/video/17a.json/master.m3u8",
         "isPlaying": false,
@@ -173,21 +173,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 1,
+            "id": 17,
             "text": "何に効果がありますか？",
             "url": "https://superreal.reddtech.ai/video/17a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 17,
             "text": "何に効果がありますか？",
             "url": "https://superreal.reddtech.ai/video/17b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 17,
             "text": "何に効果がありますか？",
             "url": "https://superreal.reddtech.ai/video/17c.json/master.m3u8",
             "isPlaying": false,
@@ -196,7 +196,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 22,
         "text": "効果はどれくらい続きますか？",
         "url": "https://superreal.reddtech.ai/video/22a.json/master.m3u8",
         "isPlaying": false,
@@ -204,21 +204,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 2,
+            "id": 22,
             "text": "効果はどれくらい続きますか？",
             "url": "https://superreal.reddtech.ai/video/22a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 22,
             "text": "効果はどれくらい続きますか？",
             "url": "https://superreal.reddtech.ai/video/22b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 22,
             "text": "効果はどれくらい続きますか？",
             "url": "https://superreal.reddtech.ai/video/22c.json/master.m3u8",
             "isPlaying": false,
@@ -227,7 +227,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 31,
         "text": "その他",
         "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
         "isPlaying": false,
@@ -235,21 +235,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31c.json/master.m3u8",
             "isPlaying": false,
@@ -264,7 +264,7 @@
     "buttonText": "注意点",
     "buttonOptions": [
       {
-        "id": 1,
+        "id": 14,
         "text": "何歳から受けられますか？",
         "url": "https://superreal.reddtech.ai/video/14a.json/master.m3u8",
         "isPlaying": false,
@@ -272,21 +272,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 1,
+            "id": 14,
             "text": "何歳から受けられますか？",
             "url": "https://superreal.reddtech.ai/video/14a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 14,
             "text": "何歳から受けられますか？",
             "url": "https://superreal.reddtech.ai/video/14b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 14,
             "text": "何歳から受けられますか？",
             "url": "https://superreal.reddtech.ai/video/14c.json/master.m3u8",
             "isPlaying": false,
@@ -295,7 +295,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 16,
         "text": "副作用はありますか？",
         "url": "https://superreal.reddtech.ai/video/16a.json/master.m3u8",
         "isPlaying": false,
@@ -303,21 +303,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 2,
+            "id": 16,
             "text": "副作用はありますか？",
             "url": "https://superreal.reddtech.ai/video/16a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 16,
             "text": "副作用はありますか？",
             "url": "https://superreal.reddtech.ai/video/16b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 16,
             "text": "副作用はありますか？",
             "url": "https://superreal.reddtech.ai/video/16c.json/master.m3u8",
             "isPlaying": false,
@@ -326,7 +326,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 19,
         "text": "ガンでも受けられますか？",
         "url": "https://superreal.reddtech.ai/video/19a.json/master.m3u8",
         "isPlaying": false,
@@ -334,21 +334,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 3,
+            "id": 19,
             "text": "ガンでも受けられますか？",
             "url": "https://superreal.reddtech.ai/video/19a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 19,
             "text": "ガンでも受けられますか？",
             "url": "https://superreal.reddtech.ai/video/19b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 19,
             "text": "ガンでも受けられますか？",
             "url": "https://superreal.reddtech.ai/video/19c.json/master.m3u8",
             "isPlaying": false,
@@ -357,7 +357,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 20,
         "text": "薬を服用中ですが、受けられますか？",
         "url": "https://superreal.reddtech.ai/video/20a.json/master.m3u8",
         "isPlaying": false,
@@ -365,21 +365,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 4,
+            "id": 20,
             "text": "薬を服用中ですが、受けられますか？",
             "url": "https://superreal.reddtech.ai/video/20a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 4,
+            "id": 20,
             "text": "薬を服用中ですが、受けられますか？",
             "url": "https://superreal.reddtech.ai/video/20b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 4,
+            "id": 20,
             "text": "薬を服用中ですが、受けられますか？",
             "url": "https://superreal.reddtech.ai/video/20c.json/master.m3u8",
             "isPlaying": false,
@@ -388,7 +388,7 @@
         ]
       },
       {
-        "id": 5,
+        "id": 31,
         "text": "その他",
         "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
         "isPlaying": false,
@@ -396,21 +396,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 5,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 5,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 5,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31c.json/master.m3u8",
             "isPlaying": false,
@@ -425,7 +425,7 @@
     "buttonText": "接種後",
     "buttonOptions": [
       {
-        "id": 1,
+        "id": 21,
         "text": "継続して投与する必要がありますか？",
         "url": "https://superreal.reddtech.ai/video/21a.json/master.m3u8",
         "isPlaying": false,
@@ -433,21 +433,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 1,
+            "id": 21,
             "text": "継続して投与する必要がありますか？",
             "url": "https://superreal.reddtech.ai/video/21a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 21,
             "text": "継続して投与する必要がありますか？",
             "url": "https://superreal.reddtech.ai/video/21b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 1,
+            "id": 21,
             "text": "継続して投与する必要がありますか？",
             "url": "https://superreal.reddtech.ai/video/21c.json/master.m3u8",
             "isPlaying": false,
@@ -456,7 +456,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 23,
         "text": "投与後気をつけることはありますか？",
         "url": "https://superreal.reddtech.ai/video/23a.json/master.m3u8",
         "isPlaying": false,
@@ -464,21 +464,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 2,
+            "id": 23,
             "text": "投与後気をつけることはありますか？",
             "url": "https://superreal.reddtech.ai/video/23a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 23,
             "text": "投与後気をつけることはありますか？",
             "url": "https://superreal.reddtech.ai/video/23b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 2,
+            "id": 23,
             "text": "投与後気をつけることはありますか？",
             "url": "https://superreal.reddtech.ai/video/23c.json/master.m3u8",
             "isPlaying": false,
@@ -487,7 +487,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 31,
         "text": "その他",
         "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
         "isPlaying": false,
@@ -495,21 +495,21 @@
         "isVisible": true,
         "suggestions": [
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31a.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31b.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
-            "id": 3,
+            "id": 31,
             "text": "その他",
             "url": "https://superreal.reddtech.ai/video/31c.json/master.m3u8",
             "isPlaying": false,

@@ -28,18 +28,16 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   current,
   onVideoEnd,
 }) => {
+  const [canPlay, setCanPlay] = useState(false);
   const screenSize = useAppSelector((state) => state.store.screenSize);
   const playerRef = useRef<HTMLVideoElement | null>(null);
   const [videoURL, setVideoURL] = useState<string | null>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      playerRef.current?.play();
-    }, 200);
-  }, []);
-
-  useEffect(() => {
     const playVideo = async () => {
+      if (current?.url !== videoURL) {
+        setCanPlay(false);
+      }
       if (current) {
         setVideoURL(current.url);
         if (current.isPlaying) {
@@ -52,7 +50,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       }
     };
     playVideo();
-  }, [current, activeButton?.buttonOptions]);
+  }, [current, activeButton?.buttonOptions, videoURL]);
 
   const handleAnimationDone = () => {
     if (current?.isPlaying) {
@@ -60,12 +58,31 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     }
   };
 
+  const onVideoLoaded = () => {
+    if (videoURL && current?.isPlaying) {
+      setCanPlay(true);
+    }
+  };
+
+  const frameSize = () => {
+    let result = "calc(100vh - 50vh)";
+    if (screenSize > 1024) {
+      result = "calc(100vh - 20vh)";
+    }
+    if (screenSize < 390 || window.innerHeight < 844) {
+      result = "calc(100vh - 60vh)";
+    }
+    return result;
+  };
+
   return (
     <div className="tw-mt-[50px] tw-w-full tw-relative">
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
         className={`${
-          screenSize < 390 ? "tw-text-[12px]" : "md:tw-text-base"
+          screenSize < 390 || window.innerHeight < 844
+            ? "tw-text-[12px]"
+            : "md:tw-text-base"
         } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[-2px]`}
       >
         き ま た の A I モ デ ル で す
@@ -79,12 +96,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           onAnimationComplete={handleAnimationDone}
           className="video-container tw-flex tw-justify-center tw-relative"
           style={{
-            minHeight:
-              screenSize > 1024
-                ? "calc(100vh - 20vh)"
-                : screenSize < 390
-                ? "calc(100vh - 60vh)"
-                : "calc(100vh - 50vh)",
+            minHeight: frameSize(),
           }}
           key={videoURL}
         >
@@ -105,13 +117,20 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             data-testid="loader"
           />
           <Image
+            priority
             src={"/assets/blobanimation.svg"}
             width={0}
             height={0}
             alt="blob"
             style={{
-              width: "200px",
-              height: "200px",
+              width:
+                window.innerHeight < 844 || screenSize < 390
+                  ? "150px"
+                  : "200px",
+              height:
+                window.innerHeight < 844 || screenSize < 390
+                  ? "150px"
+                  : "200px",
               position: "absolute",
               left: "50%",
               top: "50%",
@@ -119,33 +138,50 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
               transform: "translate(-50%, -50%)",
             }}
           />
-          <ReactHlsPlayer
-            playerRef={playerRef}
-            autoPlay={!videoURL}
-            muted={!videoURL}
-            loop={!videoURL}
-            src={
-              videoURL
-                ? videoURL
-                : "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
-            }
-            controls={false}
-            webkit-playsinline="true"
-            playsInline
-            onEnded={onVideoEnd}
-            style={{
-              width: "auto",
-              maxHeight:
-                screenSize > 1024
-                  ? "calc(100vh - 20vh)"
-                  : screenSize < 390
-                  ? "calc(100vh - 60vh)"
-                  : "calc(100vh - 50vh)",
-              pointerEvents: "none",
-              zIndex: "20",
-              // aspectRatio: "0.75/1",
-            }}
-          />
+          {!videoURL && (
+            <ReactHlsPlayer
+              playerRef={playerRef}
+              autoPlay
+              muted
+              loop
+              src="https://superreal.reddtech.ai/video/idles.json/master.m3u8"
+              controls={false}
+              webkit-playsinline="true"
+              playsInline
+              onCanPlay={() => setCanPlay(false)}
+              style={{
+                width: "auto",
+                maxHeight: frameSize(),
+                pointerEvents: "none",
+                zIndex: "20",
+                // aspectRatio: "0.75/1",
+              }}
+            />
+          )}
+          {videoURL && (
+            <ReactHlsPlayer
+              playerRef={playerRef}
+              autoPlay={false}
+              muted={false}
+              loop={false}
+              src={videoURL}
+              controls={false}
+              webkit-playsinline="true"
+              playsInline
+              onEnded={onVideoEnd}
+              onCanPlayThrough={onVideoLoaded}
+              style={{
+                width: "auto",
+                maxHeight: frameSize(),
+                pointerEvents: "none",
+                zIndex: "20",
+                // aspectRatio: "0.75/1",
+              }}
+              className={`${
+                canPlay ? "tw-opacity-100" : "tw-opacity-0"
+              } tw-transition-all tw-duration-1000`}
+            />
+          )}
         </motion.div>
       </AnimatePresence>
     </div>

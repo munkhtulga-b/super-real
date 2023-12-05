@@ -8,7 +8,7 @@ type ButtonProps = {
   /**
    * @prop must be "play" | "pause" | "completed"
    */
-  iconType: "play" | "pause" | "completed";
+  iconType: "gray-play" | "gray-pause" | "play" | "pause" | "completed";
   option?: OptionType;
   activeButton: ButtonType;
   onClickEvent?: (option: OptionType) => void;
@@ -55,9 +55,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
       className={`${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
     >
       <span
-        className={
-          iconType === "completed" ? "tw-text-grayDark" : "tw-text-primary"
-        }
+        className={option?.isPlayed ? "tw-text-grayDark" : "tw-text-primary"}
       >
         {text}
       </span>

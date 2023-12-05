@@ -65,7 +65,15 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
       shallow.url = shallow.suggestions[randomIdx].url;
       shallow.suggestions.splice(randomIdx, 1);
     } else if (!shallow.suggestions.length) {
-      console.log("no suggestions");
+      ["a", "b", "c"].forEach((item) => {
+        shallow.suggestions.push({
+          id: shallow.id,
+          text: shallow.text,
+          url: `https://superreal.reddtech.ai/video/${shallow.id}${item}.json/master.m3u8`,
+          isPlaying: shallow.isPlaying,
+          isPlayed: shallow.isPlayed,
+        });
+      });
     }
     setActiveButton((prev) => {
       if (!prev) return null;

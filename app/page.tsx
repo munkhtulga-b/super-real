@@ -18,7 +18,7 @@ export default function Home() {
     });
   }, [dispatch]);
 
-  const appVersion = "v1.0.5";
+  const appVersion = "v1.0.6";
 
   const [screenSize, setScreenSize] = useState(0);
 
