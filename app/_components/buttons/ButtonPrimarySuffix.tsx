@@ -23,12 +23,18 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
   onClickEvent,
   current,
 }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   const bgColor = () => {
     let result = "#D3E7FF";
     if (current && current?.id === option?.id && option?.isPlaying) {
       result = "#B4D6FF";
     } else {
-      result = !option?.isPlayed ? "#D3E7FF" : "#E5E5E5";
+      if (isHovered) {
+        result = !option?.isPlayed ? "#D3E7FF" : "#F0F0F0";
+      } else {
+        result = !option?.isPlayed ? "#D3E7FF" : "#E5E5E5";
+      }
     }
     return result;
   };
@@ -38,7 +44,7 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
 
   const hoverEffect = !option?.isPlayed
     ? "hover:tw-bg-blueSoft hover:tw-border-secondary"
-    : option.isPlayed && option.suggestions.length
+    : option.isPlayed
     ? "hover:tw-bg-grayLight"
     : "";
 
@@ -52,6 +58,8 @@ const ButtonPrimary: React.FunctionComponent<ButtonProps> = ({
     <button
       onClick={handleClick}
       style={{ backgroundColor: bgColor() }}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
       className={`${borderColor} ${hoverEffect} tw-w-full tw-min-w-max tw-px-4 tw-py-[15.5px] tw-rounded-lg tw-border-[0.5px] tw-flex tw-justify-start tw-items-center tw-gap-x-[12.5px] md:tw-justify-between md:tw-gap-0 tw-transition-all tw-duration-300`}
     >
       <span

@@ -53,6 +53,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   }, [current, activeButton?.buttonOptions, videoURL]);
 
   const handleAnimationDone = () => {
+    if (!videoURL && !current) {
+      playerRef.current?.play();
+    }
     if (current?.isPlaying) {
       playerRef.current?.play();
     }
@@ -141,7 +144,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           {!videoURL && (
             <ReactHlsPlayer
               playerRef={playerRef}
-              autoPlay
+              preload="auto"
+              autoPlay={false}
               muted
               loop
               src="https://superreal.reddtech.ai/video/idles.json/master.m3u8"
