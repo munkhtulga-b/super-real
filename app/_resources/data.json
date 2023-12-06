@@ -37,7 +37,7 @@
       {
         "id": 12,
         "text": "予約の方法は？",
-        "url": "https://superreal.reddtech.ai/video/12a.json/master.m3u8",
+        "url": "https://superreal.reddtech.ai/video/test.json/master.m3u8",
         "isPlaying": false,
         "isPlayed": false,
         "isVisible": true,
@@ -45,21 +45,21 @@
           {
             "id": 12,
             "text": "予約の方法は？",
-            "url": "https://superreal.reddtech.ai/video/12a.json/master.m3u8",
+            "url": "https://superreal.reddtech.ai/video/test.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
             "id": 12,
             "text": "予約の方法は？",
-            "url": "https://superreal.reddtech.ai/video/12b.json/master.m3u8",
+            "url": "https://superreal.reddtech.ai/video/test.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           },
           {
             "id": 12,
             "text": "予約の方法は？",
-            "url": "https://superreal.reddtech.ai/video/12c.json/master.m3u8",
+            "url": "https://superreal.reddtech.ai/video/test.json/master.m3u8",
             "isPlaying": false,
             "isPlayed": false
           }
