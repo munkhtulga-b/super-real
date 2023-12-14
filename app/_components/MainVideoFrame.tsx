@@ -62,8 +62,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   };
 
   const onVideoLoaded = () => {
+    console.log("worked");
     if (videoURL && current?.isPlaying) {
+      console.log("worked here");
       setCanPlay(true);
+      playerRef.current?.play();
     }
   };
 
@@ -166,29 +169,28 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             />
           )}
           {videoURL && (
-            <span>Rendered</span>
-            // <ReactHlsPlayer
-            //   playerRef={playerRef}
-            //   autoPlay={false}
-            //   muted={false}
-            //   loop={false}
-            //   src={videoURL}
-            //   controls={false}
-            //   webkit-playsinline="true"
-            //   playsInline
-            //   onEnded={onVideoEnd}
-            //   onCanPlayThrough={onVideoLoaded}
-            //   style={{
-            //     width: "auto",
-            //     maxHeight: frameSize(),
-            //     pointerEvents: "none",
-            //     zIndex: "20",
-            //     // aspectRatio: "0.75/1",
-            //   }}
-            //   className={`${
-            //     canPlay ? "tw-opacity-100" : "tw-opacity-0"
-            //   } tw-transition-all tw-duration-1000`}
-            // />
+            <ReactHlsPlayer
+              playerRef={playerRef}
+              autoPlay={false}
+              muted={false}
+              loop={false}
+              src={videoURL}
+              controls={false}
+              webkit-playsinline="true"
+              playsInline
+              onEnded={onVideoEnd}
+              onCanPlayThrough={onVideoLoaded}
+              style={{
+                width: "auto",
+                maxHeight: frameSize(),
+                pointerEvents: "none",
+                zIndex: "20",
+                // aspectRatio: "0.75/1",
+              }}
+              className={`${
+                canPlay ? "tw-opacity-100" : "tw-opacity-0"
+              } tw-transition-all tw-duration-1000`}
+            />
           )}
         </motion.div>
       </AnimatePresence>
