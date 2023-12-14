@@ -40,7 +40,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       }
       if (current) {
         setVideoURL(current.url);
-        if (current.isPlaying) {
+        if (current.isPlaying && current.url !== videoURL) {
           playerRef.current?.play();
         } else {
           playerRef.current?.pause();
@@ -54,17 +54,13 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      setTimeout(() => {
-        playerRef.current?.play();
-      }, 1000);
+      console.log("worked");
+      playerRef.current?.play();
     }
   }, [canPlay]);
 
   const handleAnimationDone = () => {
     if (!videoURL && !current) {
-      playerRef.current?.play();
-    }
-    if (current?.isPlaying) {
       playerRef.current?.play();
     }
   };
