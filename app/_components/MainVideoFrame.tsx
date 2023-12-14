@@ -52,6 +52,14 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     playVideo();
   }, [current, activeButton?.buttonOptions, videoURL]);
 
+  useEffect(() => {
+    if (canPlay) {
+      setTimeout(() => {
+        playerRef.current?.play();
+      }, 1000);
+    }
+  }, [canPlay]);
+
   const handleAnimationDone = () => {
     if (!videoURL && !current) {
       playerRef.current?.play();
@@ -62,11 +70,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   };
 
   const onVideoLoaded = () => {
-    console.log("worked");
     if (videoURL && current?.isPlaying) {
-      console.log("worked here");
       setCanPlay(true);
-      playerRef.current?.play();
     }
   };
 
