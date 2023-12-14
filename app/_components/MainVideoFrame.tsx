@@ -68,6 +68,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   const onVideoLoaded = () => {
     if (videoURL && current?.isPlaying) {
       setCanPlay(true);
+    } else {
+      setCanPlay(false);
     }
   };
 
@@ -145,54 +147,30 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
               transform: "translate(-50%, -50%)",
             }}
           />
-          {!videoURL && (
-            <ReactHlsPlayer
-              playerRef={playerRef}
-              preload="auto"
-              autoPlay={false}
-              muted
-              loop
-              src="https://superreal.reddtech.ai/video/idles.json/master.m3u8"
-              controls={false}
-              webkit-playsinline="true"
-              playsInline
-              onCanPlay={() => setCanPlay(false)}
-              style={{
-                width: "auto",
-                maxHeight: frameSize(),
-                pointerEvents: "none",
-                zIndex: "20",
-                // aspectRatio: "0.75/1",
-              }}
-              className={`${
-                !videoURL ? "tw-opacity-100" : "tw-opacity-0"
-              } tw-transition-all tw-duration-1000`}
-            />
-          )}
-          {videoURL && (
-            <ReactHlsPlayer
-              playerRef={playerRef}
-              autoPlay={false}
-              muted={false}
-              loop={false}
-              src={videoURL}
-              controls={false}
-              webkit-playsinline="true"
-              playsInline
-              onEnded={onVideoEnd}
-              onCanPlayThrough={onVideoLoaded}
-              style={{
-                width: "auto",
-                maxHeight: frameSize(),
-                pointerEvents: "none",
-                zIndex: "20",
-                // aspectRatio: "0.75/1",
-              }}
-              className={`${
-                canPlay ? "tw-opacity-100" : "tw-opacity-0"
-              } tw-transition-all tw-duration-1000`}
-            />
-          )}
+          {canPlay ? "true" : "false"}
+          <ReactHlsPlayer
+            playerRef={playerRef}
+            preload="auto"
+            autoPlay={!videoURL}
+            muted={!videoURL}
+            loop={!videoURL}
+            src={
+              !videoURL
+                ? "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
+                : videoURL
+            }
+            controls={false}
+            webkit-playsinline="true"
+            playsInline
+            onCanPlayThrough={onVideoLoaded}
+            style={{
+              width: "auto",
+              maxHeight: frameSize(),
+              pointerEvents: "none",
+              zIndex: "20",
+              // aspectRatio: "0.75/1",
+            }}
+          />
         </motion.div>
       </AnimatePresence>
     </div>
