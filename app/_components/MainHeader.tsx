@@ -12,7 +12,7 @@ const MainHeader = () => {
         />
       </button>
       <p className="tw-m-0 tw-text-center md:tw-text-lg">
-        キマタ先生がプラスケアの商品に ついて説明いたします。
+        プラスケア代表の木又がご説明いたします。
       </p>
     </div>
   );

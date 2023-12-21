@@ -30,7 +30,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
 
   const handleOptionClick = (option: OptionType) => {
     if (current && current.id !== option.id) {
-      updateActiveButton(current);
+      return updateActiveButton(current);
     }
     updateActiveButton(option);
   };

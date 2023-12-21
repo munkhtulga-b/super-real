@@ -5,6 +5,7 @@ import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
 import { useAppSelector } from "../_redux/config";
+import ButtonMailTo from "../_components/buttons/ButtonMailTo";
 
 interface VideoFrameProps {
   activeButton: ButtonType | null;
@@ -40,7 +41,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       }
       if (current) {
         setVideoURL(current.url);
-        if (current.isPlaying && current.url !== videoURL) {
+        if (current.isPlaying) {
           playerRef.current?.play();
         } else {
           playerRef.current?.pause();
@@ -65,8 +66,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     }
   };
 
-  const onVideoLoaded = () => {
+  const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
+      console.log(e);
       setCanPlay(true);
     } else {
       setCanPlay(false);
@@ -91,10 +93,12 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         className={`${
           screenSize < 390 || window.innerHeight < 844
             ? "tw-text-[12px]"
-            : "md:tw-text-base"
-        } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[-2px]`}
+            : "md:tw-text-sm"
+        } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[5px] tw-text-grayDark/75`}
       >
-        き ま た の A I モ デ ル で す
+        これは録画ではありません。
+        <br />
+        代表の木又のAIモデルです。
       </span>
       <AnimatePresence mode="wait">
         <motion.div
@@ -147,7 +151,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
               transform: "translate(-50%, -50%)",
             }}
           />
-          {canPlay ? "true" : "false"}
           <ReactHlsPlayer
             playerRef={playerRef}
             preload="auto"
@@ -162,7 +165,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             controls={false}
             webkit-playsinline="true"
             playsInline
-            onCanPlayThrough={onVideoLoaded}
+            onCanPlay={onVideoLoaded}
+            onEnded={onVideoEnd}
             style={{
               width: "auto",
               maxHeight: frameSize(),
@@ -171,6 +175,17 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
               // aspectRatio: "0.75/1",
             }}
           />
+        </motion.div>
+      </AnimatePresence>
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2 }}
+          className="tw-absolute tw-bottom-6 md:tw-bottom-16 tw-left-1/2 tw-translate-x-[-50%] tw-z-30"
+        >
+          {current?.text === "その他" && <ButtonMailTo />}
         </motion.div>
       </AnimatePresence>
     </div>

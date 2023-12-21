@@ -41,7 +41,7 @@ export const options: DataType = {
     {
       buttonId: 1,
       id: 1,
-      text: "金額はいくらですか？1",
+      text: "金額は?1",
     },
     {
       buttonId: 1,
@@ -56,7 +56,7 @@ export const options: DataType = {
     {
       buttonId: 1,
       id: 4,
-      text: "ウェブ問診とはなんですか?",
+      text: "WEB問診とはなんですか?",
     },
     {
       buttonId: 1,
@@ -68,7 +68,7 @@ export const options: DataType = {
     {
       buttonId: 2,
       id: 1,
-      text: "金額はいくらですか？2",
+      text: "金額は?2",
     },
     {
       buttonId: 2,
@@ -83,7 +83,7 @@ export const options: DataType = {
     {
       buttonId: 2,
       id: 4,
-      text: "ウェブ問診とはなんですか?",
+      text: "WEB問診とはなんですか?",
     },
     {
       buttonId: 2,
@@ -95,7 +95,7 @@ export const options: DataType = {
     {
       buttonId: 3,
       id: 1,
-      text: "金額はいくらですか？3",
+      text: "金額は?3",
     },
     {
       buttonId: 3,
@@ -110,7 +110,7 @@ export const options: DataType = {
     {
       buttonId: 3,
       id: 4,
-      text: "ウェブ問診とはなんですか?",
+      text: "WEB問診とはなんですか?",
     },
     {
       buttonId: 3,
@@ -122,7 +122,7 @@ export const options: DataType = {
     {
       buttonId: 4,
       id: 1,
-      text: "金額はいくらですか？4",
+      text: "金額は?4",
     },
     {
       buttonId: 4,
@@ -137,7 +137,7 @@ export const options: DataType = {
     {
       buttonId: 4,
       id: 4,
-      text: "ウェブ問診とはなんですか?",
+      text: "WEB問診とはなんですか?",
     },
     {
       buttonId: 4,
