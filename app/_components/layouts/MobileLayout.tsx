@@ -78,7 +78,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
         ...prev,
         buttonOptions: prev?.buttonOptions?.map((item) => {
           if (item.id !== shallow.id) {
-            return item;
+            return { ...item, isPlaying: false };
           }
           return shallow;
         }),

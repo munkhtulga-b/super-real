@@ -38,17 +38,13 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     const playVideo = async () => {
+      console.log(current);
       if (current?.url !== videoURL) {
         setCanPlay(false);
-        if (current) {
-          setVideoKey((prevKey) => prevKey + 1);
-        }
       }
       if (current) {
         setVideoURL(current.url);
-        if (current.isPlaying) {
-          playerRef.current?.play();
-        } else {
+        if (!current.isPlaying) {
           playerRef.current?.pause();
         }
       } else {
@@ -56,7 +52,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       }
     };
     playVideo();
-  }, [current, activeButton?.buttonOptions, videoURL]);
+  }, [current]);
 
   useEffect(() => {
     if (canPlay) {
@@ -64,14 +60,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     }
   }, [canPlay]);
 
-  const handleAnimationDone = () => {
-    if (!videoURL && !current) {
-      playerRef.current?.play();
-    }
-  };
-
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
+      playerRef.current?.play();
       setCanPlay(true);
     } else {
       setCanPlay(false);
