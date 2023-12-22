@@ -104,84 +104,64 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         <br />
         代表の木又のAIモデルです。
       </span>
-      <AnimatePresence mode="wait">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          onAnimationComplete={handleAnimationDone}
-          className="video-container tw-flex tw-justify-center tw-relative"
+      <div
+        className="video-container tw-flex tw-justify-center tw-relative"
+        style={{
+          minHeight: frameSize(),
+        }}
+        key={videoURL}
+      >
+        <PuffLoader
+          size={60}
+          color="#FFFFFF"
+          loading={true}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+        <Image
+          priority
+          src={"/assets/blobanimation.svg"}
+          width={0}
+          height={0}
+          alt="blob"
           style={{
-            minHeight: frameSize(),
+            width:
+              window.innerHeight < 844 || screenSize < 390 ? "150px" : "200px",
+            height:
+              window.innerHeight < 844 || screenSize < 390 ? "150px" : "200px",
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            zIndex: "0",
+            transform: "translate(-50%, -50%)",
           }}
-          key={videoURL}
-        >
-          {/* <motion.div
-            transition={{ duration: 0.4 }}
-            key={videoURL}
-            initial={{ scale: 0, backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-            animate={{ scale: 1, backgroundColor: "rgba(255, 255, 255, 0)" }}
-            exit={{ scale: 0, backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-            className="tw-absolute tw-top-0 tw-left-0 tw-bottom-0 tw-right-0 tw-rounded-full"
-          /> */}
-          <PuffLoader
-            size={60}
-            color="#FFFFFF"
-            loading={true}
-            cssOverride={override}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-          <Image
-            priority
-            src={"/assets/blobanimation.svg"}
-            width={0}
-            height={0}
-            alt="blob"
-            style={{
-              width:
-                window.innerHeight < 844 || screenSize < 390
-                  ? "150px"
-                  : "200px",
-              height:
-                window.innerHeight < 844 || screenSize < 390
-                  ? "150px"
-                  : "200px",
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              zIndex: "0",
-              transform: "translate(-50%, -50%)",
-            }}
-          />
-          <ReactHlsPlayer
-            key={videoKey}
-            playerRef={playerRef}
-            preload="auto"
-            autoPlay={!videoURL}
-            muted={!videoURL}
-            loop={!videoURL}
-            src={
-              !videoURL
-                ? "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
-                : videoURL
-            }
-            controls={false}
-            webkit-playsinline="true"
-            playsInline
-            onCanPlay={onVideoLoaded}
-            onEnded={onVideoEnd}
-            style={{
-              width: "auto",
-              maxHeight: frameSize(),
-              pointerEvents: "none",
-              zIndex: "20",
-              // aspectRatio: "0.75/1",
-            }}
-          />
-        </motion.div>
-      </AnimatePresence>
+        />
+        <ReactHlsPlayer
+          playerRef={playerRef}
+          preload="auto"
+          autoPlay={!videoURL}
+          muted={!videoURL}
+          loop={!videoURL}
+          src={
+            !videoURL
+              ? "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
+              : videoURL
+          }
+          controls={false}
+          webkit-playsinline="true"
+          playsInline
+          onCanPlay={onVideoLoaded}
+          onEnded={onVideoEnd}
+          style={{
+            width: "auto",
+            maxHeight: frameSize(),
+            pointerEvents: "none",
+            zIndex: "20",
+            // aspectRatio: "0.75/1",
+          }}
+        />
+      </div>
       <AnimatePresence>
         <motion.div
           initial={{ opacity: 0 }}
