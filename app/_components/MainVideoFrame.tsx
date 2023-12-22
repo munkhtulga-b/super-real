@@ -125,11 +125,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           screenSize < 390 || window.innerHeight < 844
             ? "tw-text-[12px]"
             : "md:tw-text-sm"
-        } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[5px] tw-text-grayDark/75`}
+        } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[2px] tw-text-grayDark/75`}
       >
-        これは録画ではありません。
-        <br />
-        代表の木又のAIモデルです。
+        これは録画ではありません
+        {screenSize < 450 && <br />}
+        代表の木又のAIモデルです
       </span>
       <div
         className="video-container tw-flex tw-justify-center tw-relative"

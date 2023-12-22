@@ -80,7 +80,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
               key={"placeholder"}
               className="tw-text-base tw-text-grayDark tw-px-4 tw-h-[27px]"
             >
-              ご質問をどうぞ。
+              ご質問をどうぞ
             </p>
           )}
           {/* Rest of your components */}
