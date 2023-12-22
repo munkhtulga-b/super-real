@@ -56,13 +56,14 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      playerRef.current?.play();
+      setTimeout(() => {
+        playerRef.current?.play();
+      }, 2000);
     }
   }, [canPlay]);
 
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
-      playerRef.current?.play();
       setCanPlay(true);
     } else {
       setCanPlay(false);
