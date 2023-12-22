@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState, CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
-import ReactPlayer from "react-player";
 import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
@@ -38,14 +37,21 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     const playVideo = async () => {
-      console.log(current);
       if (current?.url !== videoURL) {
+        setMuted(true);
         setCanPlay(false);
       }
       if (current) {
         setVideoURL(current.url);
         if (!current.isPlaying) {
           playerRef.current?.pause();
+        }
+        if (current.url !== videoURL) {
+          const unmuteButton: HTMLButtonElement =
+            document.querySelector("#unmute-button")!;
+          setTimeout(() => {
+            unmuteButton.click();
+          }, 100);
         }
       } else {
         setVideoURL(null);
@@ -82,6 +88,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   return (
     <div className="tw-mt-[50px] tw-w-full tw-relative">
       <button
+        id="mute-toggler"
         className="tw-absolute tw-top-4 tw-left-4 tw-z-30"
         onClick={() => setMuted(!muted)}
       >
@@ -118,6 +125,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           </svg>
         )}
       </button>
+      <button
+        id="unmute-button"
+        className="tw-absolute tw-top-4 tw-left-right tw-z-0 tw-opacity-0"
+        onClick={() => setMuted(false)}
+      ></button>
 
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
