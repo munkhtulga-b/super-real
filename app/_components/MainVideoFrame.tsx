@@ -56,7 +56,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      console.log("can play");
+      playerRef.current!.muted = false;
     }
   }, [canPlay]);
 
