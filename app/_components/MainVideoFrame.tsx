@@ -153,7 +153,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             playerRef={playerRef}
             preload="auto"
             autoPlay={!videoURL}
-            muted={!videoURL}
+            muted={true}
             loop={!videoURL}
             src={
               !videoURL
