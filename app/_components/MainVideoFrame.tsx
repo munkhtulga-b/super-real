@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactHlsPlayer from "react-hls-player";
+import ReactPlayer from "react-player";
 import { ButtonType, OptionType } from "../_redux/stores/options-slice";
 import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
@@ -29,6 +30,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   current,
   onVideoEnd,
 }) => {
+  const [videoKey, setVideoKey] = useState(0);
   const [canPlay, setCanPlay] = useState(false);
   const screenSize = useAppSelector((state) => state.store.screenSize);
   const playerRef = useRef<HTMLVideoElement | null>(null);
@@ -38,6 +40,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     const playVideo = async () => {
       if (current?.url !== videoURL) {
         setCanPlay(false);
+        if (current) {
+          setVideoKey((prevKey) => prevKey + 1);
+        }
       }
       if (current) {
         setVideoURL(current.url);
@@ -86,6 +91,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   return (
     <div className="tw-mt-[50px] tw-w-full tw-relative">
+      {videoKey}
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
         className={`${
@@ -150,10 +156,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             }}
           />
           <ReactHlsPlayer
+            key={videoKey}
             playerRef={playerRef}
             preload="auto"
             autoPlay={!videoURL}
-            muted={true}
+            muted={!videoURL}
             loop={!videoURL}
             src={
               !videoURL
