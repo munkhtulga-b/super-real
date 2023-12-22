@@ -75,7 +75,6 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
                     text={option.text}
                     option={option}
                     activeButton={activeButton}
-                    onClickEvent={() => handleOptionClick(option)}
                     current={current}
                   />
                 </li>

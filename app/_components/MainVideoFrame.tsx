@@ -55,7 +55,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      console.log("worked");
       playerRef.current?.play();
     }
   }, [canPlay]);
@@ -68,7 +67,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
-      console.log(e);
       setCanPlay(true);
     } else {
       setCanPlay(false);
@@ -185,7 +183,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           transition={{ duration: 2 }}
           className="tw-absolute tw-bottom-6 md:tw-bottom-16 tw-left-1/2 tw-translate-x-[-50%] tw-z-30"
         >
-          {current?.text === "その他" && <ButtonMailTo />}
+          {current?.text === "その他" && canPlay && <ButtonMailTo />}
         </motion.div>
       </AnimatePresence>
     </div>

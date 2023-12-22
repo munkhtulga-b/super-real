@@ -28,9 +28,6 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   };
 
   const handleOptionClick = (option: OptionType) => {
-    if (current && current.id !== option.id) {
-      updateActiveButton(current);
-    }
     updateActiveButton(option);
   };
 
