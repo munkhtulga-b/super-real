@@ -56,7 +56,10 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      playerRef.current!.muted = false;
+      setTimeout(() => {
+        const player: HTMLVideoElement = document.querySelector("#player")!;
+        player.muted = false;
+      }, 1000);
     }
   }, [canPlay]);
 
@@ -81,7 +84,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   return (
     <div className="tw-mt-[50px] tw-w-full tw-relative">
-      {videoKey}
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
         className={`${
@@ -128,6 +130,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           }}
         />
         <ReactHlsPlayer
+          id="player"
           playerRef={playerRef}
           preload="auto"
           autoPlay={true}
