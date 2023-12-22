@@ -56,9 +56,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      setTimeout(() => {
-        playerRef.current?.play();
-      }, 2000);
+      console.log("can play");
     }
   }, [canPlay]);
 
@@ -132,7 +130,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         <ReactHlsPlayer
           playerRef={playerRef}
           preload="auto"
-          autoPlay={!videoURL}
+          autoPlay={true}
           muted={true}
           loop={!videoURL}
           src={
