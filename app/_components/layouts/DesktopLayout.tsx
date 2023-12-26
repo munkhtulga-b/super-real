@@ -126,7 +126,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
             height: "100%",
           }}
         />
-        <span className="tw-absolute tw-bottom-10 tw-right-10 tw-text-[10px]">
+        <span className="tw-absolute tw-bottom-10 tw-right-10 tw-text-[10px] tw-text-transparent">
           {appVersion}
         </span>
       </section>

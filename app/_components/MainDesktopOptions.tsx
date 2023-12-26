@@ -43,7 +43,7 @@ const MainDesktopOptions: React.FunctionComponent<DesktopOptionsProp> = ({
         key={"placeholder"}
         className="tw-text-lg tw-text-grayDark tw-px-4 tw-h-[27px]"
       >
-        ご質問をどうぞ。
+        ご質問をどうぞ
       </p>
       <div className="tw-rounded-[24px] tw-shadow tw-py-[25px] tw-min-h-[450px] tw-bg-white tw-mt-5">
         <section className="tw-px-[22px]">

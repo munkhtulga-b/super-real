@@ -34,6 +34,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   const screenSize = useAppSelector((state) => state.store.screenSize);
   const playerRef = useRef<HTMLVideoElement | null>(null);
   const [videoURL, setVideoURL] = useState<string | null>(null);
+  const idleVideoURL =
+    "https://superreal.reddtech.ai/video/idles.json/master.m3u8";
 
   useEffect(() => {
     const playVideo = async () => {
@@ -46,13 +48,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         if (!current.isPlaying) {
           playerRef.current?.pause();
         }
-        if (current.url !== videoURL) {
-          const unmuteButton: HTMLButtonElement =
-            document.querySelector("#unmute-button")!;
-          setTimeout(() => {
-            unmuteButton.click();
-          }, 100);
-        }
       } else {
         setVideoURL(null);
       }
@@ -62,7 +57,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      console.log("can play");
+      const unmuteButton: HTMLButtonElement =
+        document.querySelector("#unmute-button")!;
+      setTimeout(() => {
+        unmuteButton.click();
+      }, 100);
     }
   }, [canPlay]);
 
@@ -140,7 +139,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[2px] tw-text-grayDark/75`}
       >
         これは録画ではありません
-        {screenSize < 450 && <br />}
+        <br />
         代表の木又のAIモデルです
       </span>
       <div
@@ -176,6 +175,14 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             transform: "translate(-50%, -50%)",
           }}
         />
+        {/* <AnimatePresence mode="wait">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2 }}
+            className="tw-z-20"
+          > */}
         <ReactHlsPlayer
           id="player"
           playerRef={playerRef}
@@ -183,11 +190,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           autoPlay={true}
           muted={muted}
           loop={!videoURL}
-          src={
-            !videoURL
-              ? "https://superreal.reddtech.ai/video/idles.json/master.m3u8"
-              : videoURL
-          }
+          src={!videoURL ? idleVideoURL : videoURL}
           controls={false}
           webkit-playsinline="true"
           playsInline
@@ -200,18 +203,25 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             zIndex: "20",
             // aspectRatio: "0.75/1",
           }}
+          // className={`${
+          //   canPlay || !current ? "tw-opacity-100" : "tw-opacity-0"
+          // } tw-transition-all tw-duration-1000`}
         />
+        {/* </motion.div>
+        </AnimatePresence> */}
       </div>
       <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 2 }}
-          className="tw-absolute tw-bottom-6 md:tw-bottom-16 tw-left-1/2 tw-translate-x-[-50%] tw-z-30"
-        >
-          {current?.text === "その他" && canPlay && <ButtonMailTo />}
-        </motion.div>
+        {current?.text === "その他" && canPlay && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="tw-absolute tw-bottom-6 md:tw-bottom-16 tw-left-1/2 tw-translate-x-[-50%] tw-z-30"
+          >
+            <ButtonMailTo />
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
