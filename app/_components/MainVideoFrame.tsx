@@ -39,19 +39,19 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     playVideo();
-  }, [current]);
+  }, [current, canPlay]);
 
   const playVideo = async () => {
     if (current?.url !== videoURL) {
       setMuted(true);
+      setCanPlay(false);
     }
-
     if (current) {
       setVideoURL(current.url);
       if (!current.isPlaying) {
         playerRef.current?.pause();
       }
-      if (current.url !== videoURL) {
+      if (videoURL !== null) {
         const unmuteButton: HTMLButtonElement =
           document.querySelector("#unmute-button")!;
         setTimeout(() => {
@@ -60,6 +60,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       }
     } else {
       setVideoURL(null);
+      setMuted(true);
+      setCanPlay(true);
     }
   };
 
