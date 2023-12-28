@@ -6,6 +6,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import Image from "next/image";
 import { useAppSelector } from "../_redux/config";
 import ButtonMailTo from "../_components/buttons/ButtonMailTo";
+import hls from "hls.js";
 
 interface VideoFrameProps {
   activeButton: ButtonType | null;
@@ -36,6 +37,11 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   const [videoURL, setVideoURL] = useState<string | null>(null);
   const idleVideoURL =
     "https://superreal.reddtech.ai/video/idles.json/master.m3u8";
+
+  useEffect(() => {
+    const video = document.getElementById("player") as HTMLVideoElement;
+    video.canPlayType("application/vnd.apple.mpegurl");
+  }, []);
 
   useEffect(() => {
     const playVideo = async () => {
