@@ -94,7 +94,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     if (screenSize > 1024) {
       result = "calc(100vh - 20vh)";
     }
-    if (screenSize < 390 || window.innerHeight < 844) {
+    if (screenSize < 390 && window.innerHeight < 844) {
       result = "calc(100vh - 60vh)";
     }
     return result;
