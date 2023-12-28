@@ -55,16 +55,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     playVideo();
   }, [current]);
 
-  useEffect(() => {
-    if (canPlay) {
-      const unmuteButton: HTMLButtonElement =
-        document.querySelector("#unmute-button")!;
-      setTimeout(() => {
-        unmuteButton.click();
-      }, 100);
-    }
-  }, [canPlay]);
-
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
       setCanPlay(true);
@@ -124,11 +114,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           </svg>
         )}
       </button>
-      <button
-        id="unmute-button"
-        className="tw-absolute tw-top-4 tw-left-right tw-z-0 tw-opacity-0"
-        onClick={() => setMuted(false)}
-      ></button>
 
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
