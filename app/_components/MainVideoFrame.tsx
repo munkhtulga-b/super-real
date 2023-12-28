@@ -195,8 +195,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           playerRef={playerRef}
           preload="auto"
           autoPlay={true}
-          muted={muted}
-          loop={videoURL === null ? true : false}
+          muted={muted}          
+          loop={!videoURL}
           src={videoURL === null ? "https://superreal.reddtech.ai/video/idles.json/master.m3u8" : videoURL}
           controls={false}
           webkit-playsinline="true"
