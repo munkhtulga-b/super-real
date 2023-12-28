@@ -48,6 +48,13 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
         if (!current.isPlaying) {
           playerRef.current?.pause();
         }
+        if (current.url !== videoURL) {
+          const unmuteButton: HTMLButtonElement =
+            document.querySelector("#unmute-button")!;
+          setTimeout(() => {
+            unmuteButton.click();
+          }, 100);
+        }
       } else {
         setVideoURL(null);
       }
@@ -57,11 +64,12 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
   useEffect(() => {
     if (canPlay) {
-      const unmuteButton: HTMLButtonElement =
-        document.querySelector("#unmute-button")!;
-      setTimeout(() => {
-        unmuteButton.click();
-      }, 100);
+      console.log("can play");
+      // const unmuteButton: HTMLButtonElement =
+      //   document.querySelector("#unmute-button")!;
+      // setTimeout(() => {
+      //   unmuteButton.click();
+      // }, 100);
     }
   }, [canPlay]);
 
@@ -132,11 +140,10 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
 
       <span
         style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
-        className={`${
-          screenSize < 390 || window.innerHeight < 844
-            ? "tw-text-[12px]"
-            : "md:tw-text-sm"
-        } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[2px] tw-text-grayDark/75`}
+        className={`${screenSize < 390 || window.innerHeight < 844
+          ? "tw-text-[12px]"
+          : "md:tw-text-sm"
+          } tw-absolute tw-top-[13.5px] tw-right-[32.5px] md:tw-top-[41px] md:tw-right-[86.5px] tw-z-30 tw-whitespace-nowrap tw-tracking-[2px] tw-text-grayDark/75`}
       >
         これは録画ではありません
         <br />
@@ -189,8 +196,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           preload="auto"
           autoPlay={true}
           muted={muted}
-          loop={!videoURL}
-          src={!videoURL ? idleVideoURL : videoURL}
+          loop={videoURL === null ? true : false}
+          src={videoURL === null ? idleVideoURL : videoURL}
           controls={false}
           webkit-playsinline="true"
           playsInline
@@ -203,9 +210,9 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
             zIndex: "20",
             // aspectRatio: "0.75/1",
           }}
-          // className={`${
-          //   canPlay || !current ? "tw-opacity-100" : "tw-opacity-0"
-          // } tw-transition-all tw-duration-1000`}
+        // className={`${
+        //   canPlay || !current ? "tw-opacity-100" : "tw-opacity-0"
+        // } tw-transition-all tw-duration-1000`}
         />
         {/* </motion.div>
         </AnimatePresence> */}
