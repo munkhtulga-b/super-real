@@ -38,40 +38,30 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     "https://superreal.reddtech.ai/video/idles.json/master.m3u8";
 
   useEffect(() => {
-    const playVideo = async () => {
-      if (current?.url !== videoURL) {
-        setMuted(true);
-        setCanPlay(false);
-      }
-      if (current) {
-        setVideoURL(current.url);
-        if (!current.isPlaying) {
-          playerRef.current?.pause();
-        }
-        if (current.url !== videoURL) {
-          const unmuteButton: HTMLButtonElement =
-            document.querySelector("#unmute-button")!;
-          setTimeout(() => {
-            unmuteButton.click();
-          }, 100);
-        }
-      } else {
-        setVideoURL(null);
-      }
-    };
     playVideo();
   }, [current]);
 
-  useEffect(() => {
-    if (canPlay) {
-      console.log("can play");
-      // const unmuteButton: HTMLButtonElement =
-      //   document.querySelector("#unmute-button")!;
-      // setTimeout(() => {
-      //   unmuteButton.click();
-      // }, 100);
+  const playVideo = async () => {
+    if (current?.url !== videoURL) {
+      setMuted(true);
     }
-  }, [canPlay]);
+
+    if (current) {
+      setVideoURL(current.url);
+      if (!current.isPlaying) {
+        playerRef.current?.pause();
+      }
+      if (current.url !== videoURL) {
+        const unmuteButton: HTMLButtonElement =
+          document.querySelector("#unmute-button")!;
+        setTimeout(() => {
+          unmuteButton.click();
+        }, 100);
+      }
+    } else {
+      setVideoURL(null);
+    }
+  };
 
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
@@ -195,7 +185,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
           playerRef={playerRef}
           preload="auto"
           autoPlay={true}
-          muted={videoURL === null}          
+          muted={muted}
           loop={!videoURL}
           src={videoURL === null ? idleVideoURL : videoURL}
           controls={false}
