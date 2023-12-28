@@ -51,17 +51,8 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
       if (!current.isPlaying) {
         playerRef.current?.pause();
       }
-      if (videoURL !== null) {
-        const unmuteButton: HTMLButtonElement =
-          document.querySelector("#unmute-button")!;
-        setTimeout(() => {
-          unmuteButton.click();
-        }, 100);
-      }
     } else {
       setVideoURL(null);
-      setMuted(true);
-      setCanPlay(true);
     }
   };
 
