@@ -29,7 +29,7 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   current,
   onVideoEnd,
 }) => {
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
   const [canPlay, setCanPlay] = useState(false);
   const screenSize = useAppSelector((state) => state.store.screenSize);
   const playerRef = useRef<HTMLVideoElement | null>(null);
@@ -38,23 +38,48 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
     "https://superreal.reddtech.ai/video/idles.json/master.m3u8";
 
   useEffect(() => {
-    playVideo();
-  }, [current, canPlay]);
-
-  const playVideo = async () => {
-    if (current?.url !== videoURL) {
-      setMuted(true);
-      setCanPlay(false);
-    }
-    if (current) {
-      setVideoURL(current.url);
-      if (!current.isPlaying) {
-        playerRef.current?.pause();
+    const playVideo = async () => {
+      if (current?.url !== videoURL) {
+        setMuted(true);
+        setCanPlay(false);
       }
-    } else {
-      setVideoURL(null);
+      if (current) {
+        setVideoURL(current.url);
+        if (!current.isPlaying) {
+          playerRef.current?.pause();
+        }
+        if (current.url !== videoURL) {
+          const unmuteButton: HTMLButtonElement =
+            document.querySelector("#unmute-button")!;
+          setTimeout(() => {
+            unmuteButton.click();
+          }, 100);
+        }
+      } else {
+        setVideoURL(null);
+      }
+    };
+    playVideo();
+  }, [current]);
+
+  useEffect(() => {
+    if (canPlay) {
+      const unmuteButton: HTMLButtonElement =
+        document.querySelector("#unmute-button")!;
+      setTimeout(() => {
+        unmuteButton.click();
+      }, 100);
+      console.log("can play");
+      // const unmuteButton: HTMLButtonElement =
+      //   document.querySelector("#unmute-button")!;
+      // setTimeout(() => {
+      //   unmuteButton.click();
+      // }, 100);
     }
-  };
+  }, [canPlay]);
+
+
+
 
   const onVideoLoaded = (e: any) => {
     if (videoURL && current?.isPlaying) {
