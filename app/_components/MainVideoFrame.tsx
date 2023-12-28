@@ -63,16 +63,6 @@ const MainVideoFrame: React.FunctionComponent<VideoFrameProps> = ({
   }, [current]);
 
   useEffect(() => {
-    if (!videoURL) {
-      const unmuteButton: HTMLButtonElement =
-        document.querySelector("#unmute-button")!;
-      setTimeout(() => {
-        unmuteButton.click();
-      }, 100);
-    }
-  }, [videoURL]);
-
-  useEffect(() => {
     if (canPlay) {
       console.log("can play");
       // const unmuteButton: HTMLButtonElement =
