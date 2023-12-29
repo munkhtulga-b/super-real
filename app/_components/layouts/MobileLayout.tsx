@@ -4,11 +4,18 @@ import MainHeader from "../MainHeader";
 import MainVideoFrame from "../MainVideoFrame";
 import MainOptions from "../MainMobileOptions";
 import { ButtonType, OptionType } from "../../_redux/stores/options-slice";
+import { deviceDetect } from "mobile-device-detect";
 
 const MobileLayout = ({ appVersion }: { appVersion: string }) => {
+  const device = deviceDetect();
+  const [showToast, setShowToast] = useState(false);
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<OptionType | null>(null);
+
+  useEffect(() => {
+    shouldShowToast()
+  }, [])
 
   useEffect(() => {
     const shuffled: ButtonType[] = [];
@@ -92,8 +99,23 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
     setCurrent(null);
   };
 
+  const shouldShowToast = () => {
+    if (device.isMobile && device.os === "iOS" && device.osVersion.split(".")[0] === "16") {
+      setShowToast(true);
+    }
+  }
+
+  const toast = () => {
+    return (
+      <div onClick={() => setShowToast(false)} className="tw-fixed tw-top-4 tw-right-4 tw-left-4 tw-p-4 tw-rounded-md tw-shadow tw-bg-white tw-z-[999]">
+          <p className="tw-text-[12px]">Your iOS version is not supported. Please update</p>
+      </div>
+    )
+  }
+
   return (
     <div className="tw-grid tw-grid-cols-1 tw-auto-rows-min">
+      {showToast && toast()}
       <MainHeader />
       <MainVideoFrame
         activeButton={activeButton}
