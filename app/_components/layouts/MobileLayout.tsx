@@ -9,7 +9,7 @@ import { deviceDetect } from "mobile-device-detect";
 const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const device = deviceDetect();
   const [showToast, setShowToast] = useState(false);
-  const toastVersionList = ["16.3", "16.4", "16.5", "16.6"]
+  const toastVersionList = ["16.2", "16.3", "16.4", "16.5", "16.6"]
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<OptionType | null>(null);
@@ -110,16 +110,21 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
 
   const toast = () => {
     return (
-      <div onClick={() => setShowToast(false)} className="tw-fixed tw-top-4 tw-right-4 tw-left-4 tw-p-4 tw-rounded-md tw-shadow tw-bg-white tw-z-[999]">
-          <p className="tw-text-[12px]">Your iOS version is not supported. Please update</p>
-      </div>
+      <div className="tw-m-3 tw-top-4 tw-right-4 tw-left-4 tw-p-4 tw-rounded-md tw-shadow tw-bg-white tw-z-[999]">
+        <p className="tw-text-[12px]">
+          うまく動かない場合は最新のOSに 
+          <a href="https://support.apple.com/ja-jp/HT204204" target="_blank" className="tw-text-blue-400">
+            アップデート
+          </a>してください
+        </p>
+      </div >
     )
   }
 
   return (
     <div className="tw-grid tw-grid-cols-1 tw-auto-rows-min">
-      {showToast && toast()}
       <MainHeader />
+      {showToast && toast()}
       <MainVideoFrame
         activeButton={activeButton}
         current={current}
@@ -133,7 +138,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
         handleOptionClick={handleOptionClick}
         handleReturn={handleReturn}
       />
-      <section className="tw-flex tw-justify-center tw-text-[10px]">
+      <section className="tw-flex tw-justify-center tw-text-[10px] tw-text-transparent">
         {appVersion}
       </section>
     </div>
