@@ -9,7 +9,7 @@ import { deviceDetect } from "mobile-device-detect";
 const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const device = deviceDetect();
   const [showToast, setShowToast] = useState(false);
-  const toastVersionList = ["16.2", "16.3", "16.4", "16.5", "16.6"]
+  const toastVersionList = ["16.3", "16.4", "16.5", "16.6"]
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<OptionType | null>(null);
