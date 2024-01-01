@@ -110,7 +110,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
               })}
           </section>
         </motion.div>
-        <section className="tw-px-4 tw-mt-[25px] tw-mb-[45px]">
+        <section className="tw-px-4 tw-mt-[15px] tw-mb-[45px]">
           <ButtonSecondary />
         </section>
       </div>
