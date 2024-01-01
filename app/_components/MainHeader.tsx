@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-const MainHeader = () => {
+const MainHeader = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <div className={`
-    tw-mt-[10px] tw-px-2 md:tw-px-0 tw-py-1 tw-flex tw-justify-center md:tw-justify-start tw-gap-x-2 md:tw-gap-x-4
+    ${isMobile ? 'tw-mt-[10px]' : 'tw-mt-[39px]'} tw-px-2 md:tw-px-0 tw-py-1 tw-flex tw-justify-center md:tw-justify-start tw-gap-x-2 md:tw-gap-x-4
     `}>
       <button className="tw-w-[30px] tw-h-[30px] tw-grid tw-place-items-center">
         <a href="https://pluscare-sol.co.jp/exosome">

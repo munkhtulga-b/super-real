@@ -128,7 +128,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
 
   return (
     <div className="tw-grid tw-grid-cols-1 tw-auto-rows-min">
-      <MainHeader />
+      <MainHeader isMobile={true} />
       {showToast && toast()}
       <MainVideoFrame
         activeButton={activeButton}

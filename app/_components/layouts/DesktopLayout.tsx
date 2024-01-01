@@ -93,7 +93,7 @@ const DesktopLayout = ({ appVersion }: { appVersion: string }) => {
       className="tw-grid tw-grid-cols-2 tw-place-items-stretch"
     >
       <section className="tw-flex tw-flex-col tw-justify-between md:tw-px-[25px] xl:tw-px-[50px]">
-        <MainHeader />
+        <MainHeader isMobile={false} />
         <MainVideoFrame
           activeButton={activeButton}
           current={current}
