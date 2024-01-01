@@ -9,9 +9,7 @@ import { deviceDetect } from "mobile-device-detect";
 const MobileLayout = ({ appVersion }: { appVersion: string }) => {
   const device = deviceDetect();
   const [showToast, setShowToast] = useState(false);
-  const [iosVersion, setIosVersion] = useState('')
   const toastVersionList = ["16.3", "16.4", "16.5", "16.6", "16.2"]
-  const fixIOSVersion = ["16.2", "17.2"]
   const [buttons, setButtons] = useState<ButtonType[]>(dataJSON);
   const [activeButton, setActiveButton] = useState<ButtonType | null>(null);
   const [current, setCurrent] = useState<OptionType | null>(null);
@@ -108,10 +106,6 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
     if (device.isMobile && device.os === "iOS" && isToastVersion) {
       setShowToast(true);
     }
-    const isFixVersion = fixIOSVersion.find(item => item === osVersion)
-    if (device.isMobile && device.os === "iOS" && isFixVersion) {
-      setIosVersion(osVersion)
-    }
   }
 
   const toast = () => {
@@ -150,7 +144,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
         handleReturn={handleReturn}
       />
       <section className="tw-flex tw-justify-center tw-text-[10px]">
-        {appVersion} {iosVersion}
+        {appVersion}
       </section>
     </div>
   );
