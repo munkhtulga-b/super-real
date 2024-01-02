@@ -6,6 +6,7 @@ import ButtonPrimarySuffix from "./buttons/ButtonPrimarySuffix";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ButtonType, OptionType } from "../_redux/stores/options-slice";
+import getWindowDimensions from "../_helper/window";
 
 interface MobileOptionsProps {
   buttons: ButtonType[];
@@ -35,11 +36,13 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
         current?.id === option.id && current.isPlaying
           ? "gray-pause"
           : current?.id === option.id && !current?.isPlaying
-          ? "gray-play"
-          : "completed";
+            ? "gray-play"
+            : "completed";
     }
     return result;
   };
+
+
 
   const returnComponent = () => {
     return (
@@ -78,7 +81,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
             // Your second component
             <p
               key={"placeholder"}
-              className="tw-text-base tw-text-grayDark tw-px-4 tw-h-[27px]"
+              className={`tw-text-base tw-text-grayDark tw-px-4 tw-h-[${getWindowDimensions().height > 700 ? '27' : '17'}px]`}
             >
               ご質問をどうぞ
             </p>
@@ -110,7 +113,7 @@ const MainOptions: React.FunctionComponent<MobileOptionsProps> = ({
               })}
           </section>
         </motion.div>
-        <section className="tw-px-4 tw-mt-[15px] tw-mb-[45px]">
+        <section className={`tw-px-4 tw-mt-[${getWindowDimensions.length > 700 ? 25 : 15}px] tw-mb-[45px]`}>
           <ButtonSecondary />
         </section>
       </div>

@@ -143,7 +143,7 @@ const MobileLayout = ({ appVersion }: { appVersion: string }) => {
         handleOptionClick={handleOptionClick}
         handleReturn={handleReturn}
       />
-      <section className="tw-flex tw-justify-center tw-text-[10px]">
+      <section className="tw-flex tw-justify-center tw-text-[10px] tw-text-transparent">
         {appVersion}
       </section>
     </div>
